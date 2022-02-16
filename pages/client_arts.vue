@@ -1,13 +1,14 @@
 <template>
     <div class="controller_2">
         <NavBar :show="nav" :x="nav"></NavBar> 
+        <div class="inner_controller">
         <header class="header">
             <ul class="header__links">
-                <li @click="active = 'ConceptArt'" class="header__links-link">Concept</li>
-                <li @click="active = 'CharacterDesign'" class="header__links-link">Character</li>
-                <li @click="active = 'Illustration'" class="header__links-link">Illustration</li>
-                <li @click="active = 'Portrait'" class="header__links-link">portrait</li>
-                <li @click="active = 'Comics'" class="header__links-link">Comics</li>
+                <li @click="activate('Portrait')" class="header__links-link">portrait</li>
+                <li @click="activate('ConceptArt')" class="header__links-link">Concept</li>
+                <li @click="activate('CharacterDesign')" class="header__links-link">Character</li>
+                <li @click="activate('Illustration')" class="header__links-link">Illustration</li>
+                <li @click="activate('ComicsProject')" class="header__links-link">Comics</li>
             </ul> 
             <i class="fa-solid fa-bars hamburger" v-show="!nav" @click="nav = !nav"></i>  
         </header>
@@ -19,6 +20,7 @@
             <LazyPortrait keep-alive v-if="tuts"></LazyPortrait> -->
             <NuxtDynamic :component="active" />
         </main>
+        </div>
     </div>    
 </template>
 
@@ -30,6 +32,12 @@ export default {
             nav: false,
             active: "Portrait"
         }
+    },
+    methods:{
+        activate(value){
+           this.active = value ;
+           this.nav = false;
+        }
     }
 }
 </script>
@@ -40,6 +48,7 @@ export default {
         cursor: pointer;
         transition: 0.3s font-size;
         align-self: start;
+        justify-self: start;
         // margin: 0 auto 0 0;
         &:hover{
             font-size: 1.4em;
@@ -53,6 +62,7 @@ export default {
         padding: 2.5em 0 2.5em 7vmin;
         align-items: center;
         box-sizing: none;
+        // position: fixed;
 
         &__links{
             display: flex;
@@ -78,5 +88,21 @@ export default {
                 }
             }
         }
+    }
+
+    .controller_2{
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        place-items: center;
+    }
+
+    .inner_controller{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .display{
+
     }
 </style>
