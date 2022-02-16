@@ -1,37 +1,31 @@
 <template>
     <div class="controller">
-        <NavBar></NavBar>
+        <NavBar :show="true" :x="false"></NavBar>
         <main class="main">
-            <div class="card">
+            <NuxtLink :to='"client_arts/"+"portrait"' class="card" v-for="index in 6" :key="index">
                 <p class="card__text">PORTRAITS</p>
-            </div>
-            <div class="card">
-                <p class="card__text">PORTRAITS</p>
-            </div>
-            <div class="card">
-                <p class="card__text">PORTRAITS</p>
-            </div>
-            <div class="card">
-                <p class="card__text">PORTRAITS</p>
-            </div>
-       
-         
+            </NuxtLink>
         </main>
-    
     </div>
 </template>
+
+<script>
+export default {
+    
+}
+</script>
 
 <style lang="scss" scoped>
     .main{
         position: relative;
         display: flex;
         flex-flow: row wrap;
-        align-content: center;
-        justify-content: space-between;
+        align-content: space-evenly;
+        justify-content: center;
         place-items: center;
         min-height: 100%;
         width: 100%;
-        padding: 0 8vmin 0 8vmin;
+        padding: 2vmin 1vmin 2vmin 0vmin;
         // z-index: -1;
         
     }
@@ -56,11 +50,11 @@
 
     .card{
 
+        text-decoration: none;
         display: flex;
         flex-direction: column;
         height: 18em;
         width: 14em;
-        background-color: blue;
         text-align: center;
         justify-content: flex-end;
         padding: 0 0 4em 0;
@@ -71,10 +65,9 @@
         background-size: cover;
         z-index: 2;
         
-        &:not(:nth-child(1)){
-            border: 5px solid white;
-            margin: 0 0 0 1em;
-        }
+            // border: 0.2em solid rgb(255, 255, 255);
+            box-shadow: 2px 2px 5px 0px rgb(192, 192, 192);
+            margin: 1em 0 0 5vmin;
 
         &__text{
             font-family: "Fahkwang";
