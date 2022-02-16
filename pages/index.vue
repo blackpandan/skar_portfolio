@@ -1,11 +1,11 @@
 <template>
   <div class="controller">
-    <NavBar></NavBar>
+    <NavBar :show="true" :x="false"></NavBar>
     <main class="main_home">
       <!-- <img class="main__image" src="/pics/clients_work/portrait/flower_girl.webp"/> -->
     </main>
 </div>
-  </template>
+</template>
 
 <script>
 export default {
@@ -36,7 +36,7 @@ export default {
 
   .controller{
     display: flex;
-    background-color: black;
+    background-color: $opa;
   }
 
 

@@ -1,5 +1,6 @@
  <template>
- <nav class="nav">
+ <nav class="nav" v-show="show">
+      <i class="fa-solid fa-xmark xmark" v-show="x" @click="show = !show"></i>
       <div class="nav__image">
         <img class="nav__image-pic" src="/pics/personal/paintings/skar.webp" />
       </div>
@@ -13,11 +14,17 @@
     </nav>
 </template>
 
+<script>
+export default {
+  props: ["show", "x"]
+}
+</script>
+
 <style lang="scss" scoped>
     .nav{
-    background-color: #ffffff ;
+    background-color: $chill ;
     box-shadow: 0px 0px 5px 2px rgb(196, 194, 194);
-    width: fit-content;
+    // width: fit-content;
     min-height: 100vh;
     padding: 2em 6vmin 0 6vmin;
     width: 40vmin;
@@ -40,7 +47,7 @@
       display: flex;
       flex-direction: column;
       &-link{
-        color: #8a2ea7c5;
+        color: $primary;
         font-family: "Roboto";
         font-weight: bold;
         font-size: 0.81em;
@@ -50,13 +57,29 @@
         cursor: pointer;
         text-align: center;
         text-decoration: none;
+        transition: 0.4s font-size, 0.4s color;
       
         &:hover{
-            font-size: 0.87em;
+            font-size: 0.9em;
           color: black;
         }
       
       }
     }
+  }
+
+  .xmark{
+    color: $primary;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 0 0 1em 0;
+    cursor: pointer;
+    transition: 0.2s color, 0.2s transform;    
+
+    &:hover{
+      color: $secondary;
+      transform: scale(1.25);
+    }
+    
   }
 </style>
