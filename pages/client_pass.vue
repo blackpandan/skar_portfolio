@@ -2,7 +2,7 @@
     <div class="controller">
         <NavBar :show="true" :x="false"></NavBar>
         <main class="main">
-            <NuxtLink :to='"client_arts/"+"portrait"' class="card" v-for="index in 6" :key="index">
+            <NuxtLink to="client_arts" class="card" v-for="index in 6" :key="index">
                 <p class="card__text">PORTRAITS</p>
             </NuxtLink>
         </main>
