@@ -20,11 +20,18 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script:[
+      { 
+      src:"https://kit.fontawesome.com/4c4a079b95.js", 
+      crossorigin:"anonymous"
+    }
     ]
   },
-
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~assets/scss/global.scss',
+    '~assets/scss/colors.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -36,6 +43,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    '@nuxtjs/style-resources'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -43,6 +51,11 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
   ],
+
+
+  styleResources: {
+    scss: ['./assets/scss/*.scss']
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
