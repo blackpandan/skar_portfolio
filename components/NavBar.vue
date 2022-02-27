@@ -1,5 +1,6 @@
  <template>
- <nav class="nav" v-show="show">
+ <transition name="fade">
+    <nav class="nav" v-show="show">
       <div class="nav__image">
         <img class="nav__image-pic" src="/pics/personal/paintings/skar.webp" />
       </div>
@@ -11,6 +12,7 @@
         <NuxtLink to="/contact" class="nav__links-link">CONTACT</NuxtLink>
       </ul>
     </nav>
+ </transition>
 </template>
 
 <script>
@@ -22,13 +24,13 @@ export default {
 <style lang="scss" scoped>
     .nav{
     background-color: $chill ;
-    box-shadow: 0px 0px 5px 2px rgb(196, 194, 194);
+    box-shadow: 0px 0px 5px 2px $primary;
     // width: fit-content;
     position: fixed;
     min-height: 100vh;
     padding: 2em 6vmin 0 6vmin;
     width: 40vmin;
-    z-index: 3;
+    z-index: 4;
 
     &__image{
       width: 12em;
@@ -68,5 +70,13 @@ export default {
       }
     }
   }
+
+  .fade-enter-active, .fade-leave-active {
+  transition: all .4s ease;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  transform: translateX(-10vmin); 
+  opacity: 0;
+}
 
 </style>
