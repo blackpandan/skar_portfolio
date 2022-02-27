@@ -37,12 +37,14 @@ export default {
   .controller{
     display: flex;
     background-color: $opa;
+    min-height: 100vh;
   }
 
 
   
   .main_home{
     width: 180vmin;
+    margin: 0 0 0 40vmin;
     min-height: 100vh;
     background-image: url("/pics/clients_work/portrait/flower_girl.webp");
     background-repeat: no-repeat;

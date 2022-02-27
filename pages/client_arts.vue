@@ -1,6 +1,9 @@
 <template>
     <div class="controller_2">
-        <NavBar :show="nav" :x="nav"></NavBar> 
+        <NavBar :show="nav" :x="nav"></NavBar>
+        <transition name="overlayTrans"> 
+            <div class="overlay" v-show="nav" @click="handleOverlay()"></div>
+        </transition>
         <!-- <i :class="[ham ? activeHam : 'fa-bars', 'fa-solid', 'hamburger']"  @click="hamburgerAction()"></i>   -->
             <div :class="[{'testburger__open':hamHover}, {'testburger__click':hamClick},'testburger']"  @mouseenter="hamHover = !hamHover" @mouseleave="hamHover = !hamHover" @click="hamburgerAction()">
                 <span class="testburger__line testburger__line-1"></span>
@@ -53,6 +56,9 @@ export default {
         hamburgerAction(){
             this.nav = !this.nav;
             this.hamClick = !this.hamClick;
+        },
+        handleOverlay(){
+            this.nav = !this.nav;
         }
     }
 }
@@ -67,6 +73,26 @@ export default {
         display: flex;
         flex-direction: column;
         width: 100%;
+    }
+
+    .overlay{
+        background-color: black;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        z-index: 3;
+        opacity: 0.8;
+        transition: all 3s ease;
+
+        &Trans-enter-active, &Trans-leave-active {
+            transition: all .3s;
+        }
+
+        &Trans-enter, &Trans-leave-to /* .fade-leave-active below version 2.1.8 */ {
+          transform: translateX(150vmin); 
+          opacity: 0;
+        }
+        
     }
 
     .testburger{
