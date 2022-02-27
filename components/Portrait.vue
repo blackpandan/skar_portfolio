@@ -26,24 +26,5 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-    .previewCard{
-        width: 40vmin;
-        height: 50vmin;
-        // background-color: green;
-        margin: 4em 0 0 0;
-        box-shadow: 0 70px 63px -60px #000000;
-        border-radius: 2vmin;
-        background-position: center center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        cursor: pointer;
-    }
-
-    .display__controller{
-        display: flex;
-        justify-content: space-between;
-        align-items: space-between;
-        flex-direction: row;
-        flex-flow: wrap;
-    }
+    
 </style>
