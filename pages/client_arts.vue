@@ -252,7 +252,7 @@ export default {
         min-height: calc(130vh - 6em);
         
         &__scroll{
-            box-shadow: 0px 1px 0.3em 0px darken($color: $chill, $amount: 28);
+            box-shadow: 0px 1px 0.3em 0px lighten($color: $primary, $amount: 18);
         }
     }
 </style>
