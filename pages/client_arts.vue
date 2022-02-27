@@ -1,6 +1,13 @@
 <template>
     <div class="controller_2">
         <NavBar :show="nav" :x="nav"></NavBar> 
+        <!-- <i :class="[ham ? activeHam : 'fa-bars', 'fa-solid', 'hamburger']"  @click="hamburgerAction()"></i>   -->
+            <div :class="[{'testburger__open':hamHover}, {'testburger__click':hamClick},'testburger']"  @mouseenter="hamHover = !hamHover" @mouseleave="hamHover = !hamHover" @click="hamburgerAction()">
+                <span class="testburger__line testburger__line-1"></span>
+                <span class="testburger__line testburger__line-2"></span>
+                <span class="testburger__line testburger__line-3"></span>            
+            </div>
+
         <div class="inner_controller">
         <header class="header">
             <ul class="header__links">
@@ -10,7 +17,6 @@
                 <li @click="activate('Illustration')" class="header__links-link">Illustration</li>
                 <li @click="activate('ComicsProject')" class="header__links-link">Comics</li>
             </ul> 
-            <i class="fa-solid fa-bars hamburger" v-show="!nav" @click="nav = !nav"></i>  
         </header>
         <main class="display">
             <!-- <LazyIllustration keep-alive v-if="tuts"></LazyIllustration>
@@ -30,43 +36,124 @@ export default {
         return{
             tuts: false,
             nav: false,
-            active: "Portrait"
+            active: "Portrait",
+            hamHover: false,
+            hamClick: false,
+            activeHam: [
+                'fa-xmark',
+                'xmark'
+            ]
         }
     },
     methods:{
         activate(value){
            this.active = value ;
            this.nav = false;
+        },
+        hamburgerAction(){
+            this.nav = !this.nav;
+            this.hamClick = !this.hamClick;
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
+    .controller_2{
+        display: flex;
+    }
+
+    .inner_controller{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .testburger{
+            width: fit-content;
+            height: 1.7em;
+            margin: 2.2em 0 0 2em;
+            position: fixed;
+            // background-color: blue;
+            
+            cursor: pointer;
+            padding:  0.2em;    
+            z-index: 99; 
+        
+        &__click{
+            & .testburger__line{
+                width: 1.4em;
+                &-1{
+                    background-color: $opa;
+                    transform: translateY(180%) rotate(-45deg);
+                }
+
+                &-2{
+                    width: 0;
+                }
+
+                &-3{
+                    background-color: $opa;
+                    transform: translateX(1%) rotate(45deg);
+                }
+            }
+        }
+
+        &__open{
+            & .testburger__line{
+                background-color: $primary;
+            }
+
+        }
+
+        &__line{
+            background-color: $opa;
+            width: 1.4em;
+            height: 0.158em;
+            display: block;
+            // transform: translate(-50%, -50%);
+            transition: width 0.1s, height 0.1s, transform 0.3s;
+
+            &-2{
+                transform: translateY(0.3em)
+            }
+
+            &-3{
+                transform: translateY(0.7em)
+            }
+        }
+    }
+
     .hamburger{
-        font-size: 1.22em;
+        font-size: 1.25em;
         cursor: pointer;
         transition: 0.3s font-size;
-        align-self: start;
-        justify-self: start;
-        // margin: 0 auto 0 0;
+        position: fixed;
+        margin: 1.7em 0 0 5vmin;
+        // z-index: 99;
+        transition: 0.3s;
         &:hover{
-            font-size: 1.4em;
+            transform: scale(1.25)
         }
     }
 
     .header{
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        width: 100vw;
         background-color: $chill;
-        padding: 2.5em 0 2.5em 7vmin;
+        padding: 2.5em 0 2.5em 0vmin;
         align-items: center;
+        // justify-content: center;
         box-sizing: none;
-        // position: fixed;
+        position: fixed;
+        z-index: 2;
+        
 
         &__links{
             display: flex;
-            // margin: 0 auto 0 auto;
+            padding: 0 0 0 10vmin ;   
+            margin: 0 auto 0 auto;
             &-link{
                 cursor: pointer;
                 text-decoration: none;
@@ -90,19 +177,19 @@ export default {
         }
     }
 
-    .controller_2{
-        display: flex;
-        align-content: center;
-        justify-content: center;
-        place-items: center;
+    .xmark{
+        &:hover{
+            color: $secondary;
+            transform: scale(1.37);
+        }
     }
 
-    .inner_controller{
-        display: flex;
-        flex-direction: column;
-    }
 
     .display{
-
+        position: relative;
+        margin: 6em 0 0 0;
+        padding: 1em 0 0 2em;
+        z-index: 1;
+        background-color: green;
     }
 </style>
