@@ -1,12 +1,15 @@
 <template>
+<transition name="fade">
     <div class="controller">
+        
         <NavBar :show="true" :x="false"></NavBar>
         <main class="main">
-            <NuxtLink to="client_arts" class="card" v-for="index in 6" :key="index">
+            <NuxtLink to="client_arts" class="card" v-for="index in 5" :key="index">
                 <p class="card__text">PORTRAITS</p>
             </NuxtLink>
         </main>
     </div>
+</transition>
 </template>
 
 <script>
@@ -24,21 +27,22 @@ export default {
         justify-content: center;
         place-items: center;
         min-height: 100%;
-        width: 100%;
-        padding: 2vmin 1vmin 2vmin 0vmin;
-        // z-index: -1;
+        margin: 0 0 auto 40vmin;
+        padding: 5vmin 5vmin 2vmin 5vmin;
+        z-index: 1;
         
     }
+
+
 
      .main::before{
         content: "";
         top: 0px;
         bottom: 0px;
-        left: 0px;
+        left: 40vmin;
         right: 0px;
         min-height: 100vh;
-        width: 100%;
-        position: absolute;
+        position: fixed;
         background-image: url("/pics/clients_work/concept_art/dead_us_i.webp");
         background-repeat: no-repeat;
         background-position: center center;
@@ -64,9 +68,12 @@ export default {
         background-position: center center;
         background-size: cover;
         z-index: 2;
+        border-radius: 0px;
+        transition: box-shadow 0.2s, border-radius 0.2;
         
             // border: 0.2em solid rgb(255, 255, 255);
-            box-shadow: 2px 2px 5px 0px rgb(192, 192, 192);
+            
+            box-shadow: 1.5px 1.5px 2px 0px darken($color: $chill, $amount: 50);
             margin: 1em 0 0 5vmin;
 
         &__text{
@@ -74,6 +81,11 @@ export default {
             color: rgb(255, 255, 255, 1);
             z-index: 2;
             text-align: center;
+        }
+
+        &:hover{
+            border-radius: 0.5em;
+            box-shadow: 2px 2px 2px 1px $primary;
         }
     }
 </style>
