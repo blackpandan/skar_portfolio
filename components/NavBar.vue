@@ -1,6 +1,5 @@
  <template>
  <nav class="nav" v-show="show">
-      <i class="fa-solid fa-xmark xmark" v-show="x" @click="show = !show"></i>
       <div class="nav__image">
         <img class="nav__image-pic" src="/pics/personal/paintings/skar.webp" />
       </div>
@@ -25,16 +24,18 @@ export default {
     background-color: $chill ;
     box-shadow: 0px 0px 5px 2px rgb(196, 194, 194);
     // width: fit-content;
+    position: fixed;
     min-height: 100vh;
     padding: 2em 6vmin 0 6vmin;
     width: 40vmin;
+    z-index: 3;
 
     &__image{
       width: 12em;
       height: 12em;
       overflow: hidden;
       border-radius: 50%;
-      margin: 0 auto 0 auto;
+      margin: 1em auto 0 auto;
 
       &-pic{
         max-width: 100%;
@@ -61,25 +62,11 @@ export default {
       
         &:hover{
             font-size: 0.9em;
-          color: black;
+          color: $opa;
         }
       
       }
     }
   }
 
-  .xmark{
-    color: $primary;
-    font-weight: bold;
-    font-size: 1.2em;
-    padding: 0 0 1em 0;
-    cursor: pointer;
-    transition: 0.2s color, 0.2s transform;    
-
-    &:hover{
-      color: $secondary;
-      transform: scale(1.25);
-    }
-    
-  }
 </style>
