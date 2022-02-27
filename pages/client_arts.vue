@@ -12,16 +12,16 @@
             </div>
 
         <div class="inner_controller">
-        <header class="header">
+        <header :class="['display__scroll', 'header']">
             <ul class="header__links">
-                <li @click="activate('Portrait')" class="header__links-link">portrait</li>
-                <li @click="activate('ConceptArt')" class="header__links-link">Concept</li>
-                <li @click="activate('CharacterDesign')" class="header__links-link">Character</li>
-                <li @click="activate('Illustration')" class="header__links-link">Illustration</li>
-                <li @click="activate('ComicsProject')" class="header__links-link">Comics</li>
+                <li @click="activate('Portrait')" :class="[{'active': activeClass.Portrait},'header__links-link']">portrait</li>
+                <li @click="activate('ConceptArt')" :class="[{'active': activeClass.ConceptArt},'header__links-link']">Concept</li>
+                <li @click="activate('CharacterDesign')" :class="[{'active': activeClass.CharacterDesign},'header__links-link']">Character</li>
+                <li @click="activate('Illustration')" :class="[{'active': activeClass.Illustration},'header__links-link']">Illustration</li>
+                <li @click="activate('ComicsProject')" :class="[{'active': activeClass.ComicsProject},'header__links-link']">Comics</li>
             </ul> 
         </header>
-        <main class="display">
+        <main :class="['display']" >
             <!-- <LazyIllustration keep-alive v-if="tuts"></LazyIllustration>
             <LazyComics keep-alive v-if="tuts"></LazyComics>
             <LazyConceptArts keep-alive v-if="tuts"></LazyConceptArts>
@@ -40,18 +40,40 @@ export default {
             tuts: false,
             nav: false,
             active: "Portrait",
+            activeClass: {
+                Portrait: true,
+                ConceptArt: false,
+                CharacterDesign: false,
+                Illustration: false,
+                ComicsProject: false
+            },
             hamHover: false,
             hamClick: false,
             activeHam: [
                 'fa-xmark',
                 'xmark'
-            ]
+            ],
+            displayScroll: false
         }
     },
     methods:{
         activate(value){
            this.active = value ;
            this.nav = false;
+           let classes = this.activeClass;
+        //    let updatedValue = value.toLowerCase()
+        //    console.log(updatedValue)
+
+           for (const key in classes){
+            //  console.log(key);
+             if (value == key){
+                 this.activeClass[key] = true;
+             }else if(value != key){
+                 this.activeClass[key] = false;
+             }
+             ;
+
+           };
         },
         hamburgerAction(){
             this.nav = !this.nav;
@@ -59,6 +81,11 @@ export default {
         },
         handleOverlay(){
             this.nav = !this.nav;
+            this.hamClick = !this.hamClick;        
+            },
+        displayScrollAction(){
+            this.displayScroll = !this.displayScroll;
+            console.log('i don tire for')
         }
     }
 }
@@ -100,8 +127,6 @@ export default {
             height: 1.7em;
             margin: 2.2em 0 0 2em;
             position: fixed;
-            // background-color: blue;
-            
             cursor: pointer;
             padding:  0.2em;    
             z-index: 99; 
@@ -137,7 +162,6 @@ export default {
             width: 1.4em;
             height: 0.158em;
             display: block;
-            // transform: translate(-50%, -50%);
             transition: width 0.1s, height 0.1s, transform 0.3s;
 
             &-2{
@@ -150,13 +174,22 @@ export default {
         }
     }
 
+    .active{
+        color: $primary;
+        text-shadow: 1px 0px 0px lighten($color: $opa, $amount: 60);
+        transition: all 0.7s;
+
+        &:hover{
+            color: $primary;
+        }
+    }
+
     .hamburger{
         font-size: 1.25em;
         cursor: pointer;
         transition: 0.3s font-size;
         position: fixed;
         margin: 1.7em 0 0 5vmin;
-        // z-index: 99;
         transition: 0.3s;
         &:hover{
             transform: scale(1.25)
@@ -170,7 +203,6 @@ export default {
         background-color: $chill;
         padding: 2.5em 0 2.5em 0vmin;
         align-items: center;
-        // justify-content: center;
         box-sizing: none;
         position: fixed;
         z-index: 2;
@@ -189,7 +221,7 @@ export default {
                 font-weight: normal;
                 text-decoration: none;
                 font-size: 0.85em;
-                transition: 0.4s font-weight;
+                transition: 0.4s font-weight, 0.3s text-shadow, 0.5s color;
 
                 &:not(:nth-of-type(1)){
                     margin: 0 0 0 2em;
@@ -197,7 +229,7 @@ export default {
 
                 &:hover{
                     text-decoration: underline;
-                    font-weight: bold; 
+                    text-shadow: 1px 0px 0px black;
                 }
             }
         }
@@ -213,9 +245,14 @@ export default {
 
     .display{
         position: relative;
-        margin: 6em 0 0 0;
-        padding: 1em 0 0 2em;
+        margin: 4em 0 auto 0;
+        padding: 1em 2em 0 2em;
         z-index: 1;
-        background-color: green;
+        background-color: $chill;
+        min-height: calc(130vh - 6em);
+        
+        &__scroll{
+            box-shadow: 0px 1px 0.3em 0px darken($color: $chill, $amount: 28);
+        }
     }
 </style>
