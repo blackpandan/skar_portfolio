@@ -12,7 +12,7 @@ export default {
 
 <template>
 <div class="display__controller">
-    <div class="previewCard" v-for="index in 18" :key="index" :style="{backgroundImage: 'url('+url+index+'.webp'+')'}">
+    <div class="previewCard" v-for="index in 30" :key="index" :style="{backgroundImage: 'url('+url+index+'.webp'+')'}">
     </div>
 </div>
 </template>
