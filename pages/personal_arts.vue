@@ -14,11 +14,11 @@
         <div class="inner_controller">
         <header :class="['display__scroll', 'header']">
             <ul class="header__links">
-                <li @click="activate('Portrait')" :class="[{'active': activeClass.Portrait},'header__links-link']">portrait</li>
-                <li @click="activate('ConceptArt')" :class="[{'active': activeClass.ConceptArt},'header__links-link']">Concept</li>
-                <li @click="activate('CharacterDesign')" :class="[{'active': activeClass.CharacterDesign},'header__links-link']">Character</li>
+                <li @click="activate('Painting')" :class="[{'active': activeClass.Painting},'header__links-link']">painting</li>
+                <li @click="activate('Sketches')" :class="[{'active': activeClass.Sketches},'header__links-link']">sketches</li>
+                <li @click="activate('InkChallenge')" :class="[{'active': activeClass.InkChallenge},'header__links-link']">Challenge</li>
                 <li @click="activate('Illustration')" :class="[{'active': activeClass.Illustration},'header__links-link']">Illustration</li>
-                <li @click="activate('ComicsProject')" :class="[{'active': activeClass.ComicsProject},'header__links-link']">Comics</li>
+                <li @click="activate('StrangeStrokes')" :class="[{'active': activeClass.StrangeStrokes},'header__links-link']">strange_strokes</li>
             </ul> 
         </header>
         <main :class="['display']" >
@@ -39,13 +39,13 @@ export default {
         return{
             tuts: false,
             nav: false,
-            active: "Portrait",
+            active: "Painting",
             activeClass: {
-                Portrait: true,
-                ConceptArt: false,
-                CharacterDesign: false,
+                Painting: true,
+                InkChallenge: false,
+                Sketches: false,
                 Illustration: false,
-                ComicsProject: false
+                StrangeStrokes: false
             },
             hamHover: false,
             hamClick: false,
@@ -58,7 +58,7 @@ export default {
     },
     methods:{
         activate(value){
-           this.active = "Client"+value ;
+           this.active = "Personal"+value ;
            this.nav = false;
            let classes = this.activeClass;
         //    let updatedValue = value.toLowerCase()
@@ -93,7 +93,7 @@ export default {
         var vm = this;
         
         function charge(value){
-            vm.active = "Client"+value ;
+            vm.active = "Personal"+value ;
             vm.nav = false;
             
         };
@@ -117,7 +117,7 @@ export default {
             };
         }else{
             console.log("nope")
-            let stace = "Portrait";
+            let stace = "PersonalPortrait";
             charge(stace)
         }
         // let value = this.$route.params.activeComponent;
