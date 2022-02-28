@@ -9,7 +9,52 @@
 
 <script>
 export default {
-  name: 'IndexPage'
+  name: 'IndexPage',
+  head(){
+    return{
+      title: "Skar Professional Artist",
+      meta: [
+              {
+                hid: "description",
+                name: "description",
+                content: "I'm skar a professional artist who makes use of digital and tradition medium"
+              },
+              {
+                hid: 'canonical',
+                rel: 'canonical',
+                href: '',
+              },{
+        hid: 'og:title',
+        property: 'og:title',
+        content: 'Skar Professional Artist',
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content: '',
+      },
+      {
+        hid: 'og:type',
+        property: 'og:type',
+        content: 'website',
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: '/pics/personal/paintings/5.webp',
+      },
+      {
+        hid: 'og:url',
+        property: 'og:url',
+        content: 'https://thenextbit.de/'
+      },
+      {
+        property: 'og:locale',
+        content: 'en_NG',
+      },
+      ]
+    }
+  }
 }
 </script>
 
