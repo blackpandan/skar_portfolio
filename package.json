@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@nuxt/image": "^0.6.2",
+    "@nuxtjs/device": "^2.1.0",
     "@nuxtjs/sitemap": "^2.4.0",
     "@nuxtjs/style-resources": "^1.2.1",
     "sass": "^1.49.7",
