@@ -130,11 +130,13 @@ export default {
         box-shadow: 1.5px 1.5px 2px 0px darken($color: $chill, $amount: 10);
         margin: 2em 0 0 5vmin;
         transition: border-radius 0.2s, background-position 1s, background-size 1s, box-shadow 0.2s;
+        font-style: normal;
         &__text{
             font-family: "Fahkwang";
             color: rgb(255, 255, 255, 1);
             z-index: 2;
             text-align: center;
+            font-style: inherit;
         }
 
         &:hover{
@@ -142,6 +144,7 @@ export default {
             background-position: right center;
             border: 1px solid darken($color: $chill, $amount: 60);
             box-shadow: none;
+            font-style: italic;
         }
 
         &__border{
