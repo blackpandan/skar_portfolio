@@ -31,7 +31,7 @@ export default {
       {
         hid: 'og:description',
         property: 'og:description',
-        content: '',
+        content: 'I`m skar a professional artist who makes use of digital and tradition medium',
       },
       {
         hid: 'og:type',

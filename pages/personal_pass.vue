@@ -62,7 +62,7 @@ export default {
                     weird: 'hello'
                     }
                 }" 
-            v-for="(item, index) in cssVars" :key="index" class="card" :style="item.styles">
+            v-for="(item, index) in cssVars" :key="index" class="card" :style="item.styles" :rel="item.name">
             <div class="card__cover">
                 <div class="card__border">
                     <i class="card__text">{{ item.name }}</i>
