@@ -27,7 +27,7 @@
             <LazyConceptArts keep-alive v-if="tuts"></LazyConceptArts>
             <LazyCharacterDesign keep-alive v-if="tuts"></LazyCharacterDesign>
             <LazyPortrait keep-alive v-if="tuts"></LazyPortrait> -->
-            <NuxtDynamic :component="active" loading="lazy"/>
+            <NuxtDynamic :component="active" loading="eager"/>
         </main>
         </div>
     </div>    

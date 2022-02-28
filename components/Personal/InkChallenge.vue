@@ -12,7 +12,8 @@ export default {
 
 <template>
 <div class="display__controller">
-    <div class="previewCard" v-for="index in 20" :key="index" :style="{backgroundImage: 'url('+url+index+'.webp'+')'}">
+    <div class="previewCard" v-for="index in 20" :key="index">
+        <img :src="url+index+'.webp'" :alt="'inkChallenge image no' + index" class="previewCard__image" />
     </div>
 </div>
 </template>
