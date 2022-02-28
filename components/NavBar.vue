@@ -2,7 +2,7 @@
  <transition name="fade">
     <nav class="nav" v-show="show">
       <div class="nav__image">
-        <img class="nav__image-pic" src="/pics/personal/paintings/5.webp" alt="skar_picture" />
+        <img class="nav__image-pic" src="/pics/personal/paintings/5.webp" alt="skar_picture" width="100%" height="100%" />
       </div>
       <div class="nav__links">
         <NuxtLink to="/" class="nav__links-link" rel="home">HOME</NuxtLink>
@@ -40,7 +40,10 @@ export default {
       margin: 1em auto 0 auto;
 
       &-pic{
-        max-width: 100%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
       }
 
     }

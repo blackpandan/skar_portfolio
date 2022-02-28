@@ -2,7 +2,7 @@
   <div class="controller">
     <NavBar :show="true" :x="false" v-if="$device.isDesktopOrTablet"></NavBar>
     <main class="main__home">
-      <img class="main__image" src="pics/clients_work/portrait/18.webp" style="object-fit:cover" alt="portrait of a lady"/>
+      <img class="main__image" src="pics/clients_work/portrait/18.webp" style="object-fit:cover" width="100%" height="100%" alt="portrait of a lady"/>
     </main>
 </div>
 </template>
