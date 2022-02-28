@@ -15,7 +15,7 @@ export default {
                 {
                     name: "Portrait",
                     styles: [
-                        {'--bg-image': base+"portrait/18.webp)"}
+                        {'--bg-image': base+"portrait/7.webp)"}
                     ]
                 }
                 ,
@@ -64,9 +64,11 @@ export default {
                     }
                 }" 
             v-for="(item, index) in cssVars" :key="index" class="card" :style="item.styles">
+            <div class="card__cover">
                 <div class="card__border">
-                    <p class="card__text">{{ item.name }}</p>
-                </div> 
+                    <i class="card__text">{{ item.name }}</i>
+                </div>
+            </div> 
             </NuxtLink>
         </main>
     </div>
@@ -83,7 +85,7 @@ export default {
         place-items: center;
         min-height: 100%;
         margin: 0 0 auto 40vmin;
-        padding: 5vmin 5vmin 2vmin 5vmin;
+        padding: 1vmin 5vmin 1vmin 5vmin;
         z-index: 1;
         
     }
@@ -98,12 +100,12 @@ export default {
         right: 0px;
         min-height: 100vh;
         position: fixed;
-        // background-image: url("/pics/clients_work/concept_art/dead_us_i.webp");
+        background-image: url("/pics/clients_work/concept_art/dead_us_i.webp");
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
         /* Resolve Opacity Issues*/ 
-        opacity: 0.2;
+        opacity: 0.1;
         z-index: 1;
     }
 
@@ -118,19 +120,17 @@ export default {
         justify-content: center;
         align-items: center;
         padding: 0 0 0 0;
-        // background-image: var(--bg-image);
+        background-image: var(--bg-image);
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
         z-index: 2;
-        border-radius: 0px;
+        border-radius: 0.5em;
         transition: box-shadow 0.2s, border-radius 0.2;    
-        box-shadow: 1.5px 1.5px 2px 0px darken($color: $chill, $amount: 50);
-        margin: 1em 0 0 5vmin;
+        box-shadow: 1.5px 1.5px 2px 0px darken($color: $chill, $amount: 10);
+        margin: 2em 0 0 5vmin;
         transition: border-radius 0.2s, background-position 1s, background-size 1s, box-shadow 0.2s;
-
         &__text{
-            position: relative;
             font-family: "Fahkwang";
             color: rgb(255, 255, 255, 1);
             z-index: 2;
@@ -139,13 +139,13 @@ export default {
 
         &:hover{
             border-radius: 0.5em;
-            background-position: left center;
-            background-size: 400px;
-            box-shadow: 1.5px 1.5px 2px 0px darken($color: $primary, $amount: 20);
+            background-position: right center;
+            border: 1px solid darken($color: $chill, $amount: 60);
+            box-shadow: none;
         }
 
         &__border{
-            position: relative;
+            // position: relative;
             text-align: center;
             display: flex;
             align-items: flex-end;
@@ -154,15 +154,18 @@ export default {
             left: 0em;
             bottom: 0;
             right: 0;
-            height: calc(18em - 0.6em);
-            width: calc(14em - 0.6em);
+            height: calc(18em - 0.8em);
+            width: calc(14em - 0.8em);
             border: none;
             border-radius: 0.5em;
             padding: 0 0 2.5em 0;
+            background-color: none;
             transition: border 1.5s;
+
 
             &:hover{
                 border: 1px solid white;
+                background-color: rgba(0, 0, 0, 0.699);
             }
         }
     }

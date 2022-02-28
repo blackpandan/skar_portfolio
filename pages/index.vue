@@ -46,7 +46,7 @@ export default {
     width: 180vmin;
     margin: 0 0 0 40vmin;
     min-height: 100vh;
-    background-image: url("/pics/clients_work/portrait/flower_girl.webp");
+    background-image: url("/pics/clients_work/portrait/18.webp");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;

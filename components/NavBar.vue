@@ -2,7 +2,7 @@
  <transition name="fade">
     <nav class="nav" v-show="show">
       <div class="nav__image">
-        <img class="nav__image-pic" src="/pics/personal/paintings/skar.webp" />
+        <img class="nav__image-pic" src="/pics/personal/paintings/5.webp" />
       </div>
       <ul class="nav__links">
         <NuxtLink to="/" class="nav__links-link">HOME</NuxtLink>
