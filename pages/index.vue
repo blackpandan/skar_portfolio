@@ -1,8 +1,8 @@
 <template>
   <div class="controller">
-    <NavBar :show="true" :x="false"></NavBar>
-    <main class="main_home">
-      <!-- <img class="main__image" src="/pics/clients_work/portrait/flower_girl.webp"/> -->
+    <NavBar :show="true" :x="false" v-if="$device.isDesktopOrTablet"></NavBar>
+    <main class="main__home">
+      <img class="main__image" src="pics/clients_work/portrait/18.webp" style="object-fit:cover" alt="portrait of a lady"/>
     </main>
 </div>
 </template>
@@ -87,13 +87,23 @@ export default {
 
 
   
-  .main_home{
-    width: 180vmin;
-    margin: 0 0 0 40vmin;
-    min-height: 100vh;
-    background-image: url("/pics/clients_work/portrait/18.webp");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+  .main{
+    &__home{
+      width: 180vmin;
+      margin: 0 0 0 40vmin;
+      height: 100vh;
+      overflow: hidden;
+    // background-image: url("/pics/clients_work/portrait/18.webp");
+    // background-repeat: no-repeat;
+    // background-position: center center;
+    // background-size: cover;
+    }
+
+    &__image{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
   }
 </style>
