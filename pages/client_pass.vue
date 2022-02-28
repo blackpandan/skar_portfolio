@@ -8,39 +8,45 @@ export default {
     computed: {
 
         cssVars(){
-            let base = "url(/pics/clients_work/";
+            let base = "/pics/clients_work/";
+            let cBase = "url(" + base ;
 
             
             return [
                 {
                     name: "Portrait",
+                    url: base+"portrait/7.webp",
                     styles: [
-                        {'--bg-image': base+"portrait/7.webp)"}
+                        {'--bg-image': cBase+"portrait/7.webp)"}
                     ]
                 }
                 ,
                 {
                     name: "Concept Art",
+                    url: base+"concept_art/22.webp",
                     styles: [
-                        {'--bg-image': base+"concept_art/22.webp)"}
+                        {'--bg-image': cBase+"concept_art/22.webp)"}
                     ]
                 },
                 {
                     name: "Character Design",
+                    url: base + "character_design/12.webp",
                     styles: [
-                        {'--bg-image': base+"character_design/12.webp)"}
+                        {'--bg-image': cBase+"character_design/12.webp)"}
                     ],
                 },
                 {
                     name: "Illustration",
+                    url: base + "illustration/14.webp",
                     styles: [
-                        {'--bg-image': base+"illustration/14.webp)"}
+                        {'--bg-image': cBase+"illustration/14.webp)"}
                     ],
                 },
                 {
                     name: "Comics Project",
+                    url: base + "illustration/14.webp",
                     styles: [
-                        {'--bg-image': base+"comics_project/1.webp)"}
+                        {'--bg-image': cBase+"comics_project/1.webp)"}
                     ]
                 }, 
             ];
@@ -64,11 +70,10 @@ export default {
                     }
                 }" 
             v-for="(item, index) in cssVars" :key="index" class="card" :style="item.styles" :rel="item.name">
-            <div class="card__cover">
+                <img :src="item.url" alt="images for categories" class="card__image"/>
                 <div class="card__border">
                     <i class="card__text">{{ item.name }}</i>
                 </div>
-            </div> 
             </NuxtLink>
         </main>
     </div>
@@ -120,10 +125,10 @@ export default {
         justify-content: center;
         align-items: center;
         padding: 0 0 0 0;
-        background-image: var(--bg-image);
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
+        // background-image: var(--bg-image);
+        // background-repeat: no-repeat;
+        // background-position: center center;
+        // background-size: cover;
         z-index: 2;
         border-radius: 0.5em;
         transition: box-shadow 0.2s, border-radius 0.2;    
@@ -131,6 +136,8 @@ export default {
         margin: 2em 0 0 5vmin;
         transition: border-radius 0.2s, background-position 1s, background-size 1s, box-shadow 0.2s;
         font-style: normal;
+        overflow: hidden;
+
         &__text{
             font-family: "Fahkwang";
             color: rgb(255, 255, 255, 1);
@@ -148,7 +155,7 @@ export default {
         }
 
         &__border{
-            // position: relative;
+            position: relative;
             text-align: center;
             display: flex;
             align-items: flex-end;
@@ -170,6 +177,14 @@ export default {
                 border: 1px solid white;
                 background-color: rgba(0, 0, 0, 0.699);
             }
+        }
+
+        &__image{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            object-fit: cover;
+            object-position: center center;
         }
     }
 </style>
