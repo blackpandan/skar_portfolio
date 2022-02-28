@@ -6,21 +6,13 @@ export default {
         }
     },
     computed: {
-        preview(){
-            return[
-                {
-                    url: "flower_girl.webp",
-                    altName: "flower_girl"
-                }
-            ]
-        }
     }
 }
 </script>
 
 <template>
 <div class="display__controller">
-    <div class="previewCard" v-for="(item, index) in preview" :key="index" :style="{backgroundImage: 'url('+url+item.url+')'}">
+    <div class="previewCard" v-for="index in 18" :key="index" :style="{backgroundImage: 'url('+url+index+'.webp'+')'}">
     </div>
 </div>
 </template>
