@@ -73,7 +73,6 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@blokwise/dynamic',
-    '@nuxtjs/axios',
     // '@nuxtjs/sitemap'
   ],
 
