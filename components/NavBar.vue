@@ -2,15 +2,15 @@
  <transition name="fade">
     <nav class="nav" v-show="show">
       <div class="nav__image">
-        <img class="nav__image-pic" src="/pics/personal/paintings/5.webp" />
+        <img class="nav__image-pic" src="/pics/personal/paintings/5.webp" alt="skar_picture" />
       </div>
-      <ul class="nav__links">
+      <div class="nav__links">
         <NuxtLink to="/" class="nav__links-link" rel="home">HOME</NuxtLink>
         <NuxtLink to="/personal_pass" class="nav__links-link" rel="personal_arts">PERSONAL ARTS</NuxtLink>
         <NuxtLink to="/client_pass" class="nav__links-link" rel="clients_work">CLIENTS WORK</NuxtLink>
         <NuxtLink to="/about" class="nav__links-link" rel="about">ABOUT</NuxtLink>
         <NuxtLink to="/contact" class="nav__links-link" rel="contact">CONTACT</NuxtLink>
-      </ul>
+      </div>
     </nav>
  </transition>
 </template>
