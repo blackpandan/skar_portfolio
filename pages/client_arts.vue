@@ -87,6 +87,44 @@ export default {
             this.displayScroll = !this.displayScroll;
             console.log('i don tire for')
         }
+    },
+    created(){
+        console.log(this.active);
+        var vm = this;
+        
+        function charge(value){
+            vm.active = value ;
+            vm.nav = false;
+            
+        };
+
+
+        if ( Boolean(this.$route.params.activeComponent) == true ){
+            console.log("yep")
+            let classes = this.activeClass;
+            for (const key in classes){
+                //  console.log(key);
+                let stace = this.$route.params.activeComponent;
+                
+                charge(stace);
+                if (stace == key){
+                    this.activeClass[key] = true;
+                }else if(stace != key){
+                    this.activeClass[key] = false;
+                }
+                ;
+
+            };
+        }else{
+            console.log("nope")
+            let stace = "Portrait";
+            charge(stace)
+        }
+        // let value = this.$route.params.activeComponent;
+
+        //    let updatedValue = value.toLowerCase()
+        //    console.log(updatedValue)
+
     }
 }
 </script>
