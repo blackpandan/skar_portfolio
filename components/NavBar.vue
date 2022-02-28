@@ -5,11 +5,11 @@
         <img class="nav__image-pic" src="/pics/personal/paintings/5.webp" />
       </div>
       <ul class="nav__links">
-        <NuxtLink to="/" class="nav__links-link">HOME</NuxtLink>
-        <NuxtLink to="/personal_pass" class="nav__links-link">PERSONAL ARTS</NuxtLink>
-        <NuxtLink to="/client_pass" class="nav__links-link">CLIENTS WORK</NuxtLink>
-        <NuxtLink to="/about" class="nav__links-link">ABOUT</NuxtLink>
-        <NuxtLink to="/contact" class="nav__links-link">CONTACT</NuxtLink>
+        <NuxtLink to="/" class="nav__links-link" rel="home">HOME</NuxtLink>
+        <NuxtLink to="/personal_pass" class="nav__links-link" rel="personal_arts">PERSONAL ARTS</NuxtLink>
+        <NuxtLink to="/client_pass" class="nav__links-link" rel="clients_work">CLIENTS WORK</NuxtLink>
+        <NuxtLink to="/about" class="nav__links-link" rel="about">ABOUT</NuxtLink>
+        <NuxtLink to="/contact" class="nav__links-link" rel="contact">CONTACT</NuxtLink>
       </ul>
     </nav>
  </transition>
