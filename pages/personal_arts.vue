@@ -117,7 +117,7 @@ export default {
             };
         }else{
             console.log("nope")
-            let stace = "PersonalPortrait";
+            let stace = "Painting";
             charge(stace)
         }
         // let value = this.$route.params.activeComponent;
@@ -284,7 +284,7 @@ export default {
     .display{
         position: relative;
         margin: 4em 0 auto 0;
-        padding: 1em 2em 0 2em;
+        padding: 1em 2em 4em 2em;
         z-index: 1;
         background-color: $chill;
         min-height: calc(130vh - 6em);

@@ -33,7 +33,7 @@ export default {
                 {
                     name: "Ink Challenge",
                     styles: [
-                        {'--bg-image': base+"ink_challenge/16webp)"}
+                        {'--bg-image': base+"ink_challenge/16.webp)"}
                     ],
                 },
                 {
