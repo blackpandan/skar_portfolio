@@ -36,7 +36,7 @@ export default {
                 },
                 {
                     name: "Ink Challenge",
-                    url: base+"ink_challange/16.webp",
+                    url: base+"ink_challenge/16.webp",
                     styles: [
                         {'--bg-image': cBase+"ink_challenge/16.webp)"}
                     ],
