@@ -14,38 +14,38 @@ export default {
             return [
                 {
                     name: "Painting",
-                    url: base+"paintings/7.webp",
+                    url: base+"paintings/1.webp",
                     styles: [
-                        {'--bg-image': cBase+"paintings/7.webp)"}
+                        {'--bg-image': cBase+"paintings/1.webp)"}
                     ]
                 }
                 ,
                 {
                     name: "Illustration",
-                    url: base+"illustration/3.webp",
+                    url: base+"illustration/1.webp",
                     styles: [
-                        {'--bg-image': cBase+"illustration/3.webp)"}
+                        {'--bg-image': cBase+"illustration/1.webp)"}
                     ]
                 },
                 {
                     name: "Strange Strokes",
-                    url: base+"strange_strokes/18.webp",
+                    url: base+"strange_strokes/1.webp",
                     styles: [
-                        {'--bg-image': cBase+"strange_strokes/18.webp)"}
+                        {'--bg-image': cBase+"strange_strokes/1.webp)"}
                     ],
                 },
                 {
                     name: "Ink Challenge",
-                    url: base+"ink_challenge/16.webp",
+                    url: base+"ink_challenge/1.webp",
                     styles: [
-                        {'--bg-image': cBase+"ink_challenge/16.webp)"}
+                        {'--bg-image': cBase+"ink_challenge/1.webp)"}
                     ],
                 },
                 {
                     name: "Sketches",
-                    url: base+"sketches/2.webp",
+                    url: base+"sketches/1.webp",
                     styles: [
-                        {'--bg-image': cBase+"sketches/2.webp)"}
+                        {'--bg-image': cBase+"sketches/1.webp)"}
                     ]
                 }, 
             ];

@@ -15,36 +15,36 @@ export default {
             return [
                 {
                     name: "Portrait",
-                    url: base+"portrait/7.webp",
+                    url: base+"portrait/1.webp",
                     styles: [
-                        {'--bg-image': cBase+"portrait/7.webp)"}
+                        {'--bg-image': cBase+"portrait/1.webp)"}
                     ]
                 }
                 ,
                 {
                     name: "Concept Art",
-                    url: base+"concept_art/22.webp",
+                    url: base+"concept_art/1.webp",
                     styles: [
-                        {'--bg-image': cBase+"concept_art/22.webp)"}
+                        {'--bg-image': cBase+"concept_art/1.webp)"}
                     ]
                 },
                 {
                     name: "Character Design",
-                    url: base + "character_design/12.webp",
+                    url: base + "character_design/1.webp",
                     styles: [
-                        {'--bg-image': cBase+"character_design/12.webp)"}
+                        {'--bg-image': cBase+"character_design/1.webp)"}
                     ],
                 },
                 {
                     name: "Illustration",
-                    url: base + "illustration/14.webp",
+                    url: base + "illustration/1.webp",
                     styles: [
-                        {'--bg-image': cBase+"illustration/14.webp)"}
+                        {'--bg-image': cBase+"illustration/1.webp)"}
                     ],
                 },
                 {
                     name: "Comics Project",
-                    url: base + "illustration/14.webp",
+                    url: base + "comics_project/1.webp",
                     styles: [
                         {'--bg-image': cBase+"comics_project/1.webp)"}
                     ]
