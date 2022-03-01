@@ -1,3 +1,15 @@
+<<<<<<< HEAD
 version https://git-lfs.github.com/spec/v1
 oid sha256:12161f652678dade38b630cb692ed5bb611af14b5ebf5df2bbf7b4ef10afc2eb
 size 444
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<browserconfig>
+    <msapplication>
+        <tile>
+            <square150x150logo src="/mstile-150x150.png"/>
+            <TileColor>#da532c</TileColor>
+        </tile>
+    </msapplication>
+</browserconfig>
+>>>>>>> 84dd71636b7ca3b8f16a2dfa268af72e1ac5a637
