@@ -1,10 +1,1 @@
-*.jpg filter=lfs diff=lfs merge=lfs -text
-*.png filter=lfs diff=lfs merge=lfs -text
-*.webp filter=lfs diff=lfs merge=lfs -text
-<<<<<<< HEAD
-images/** filter=lfs diff=lfs merge=lfs -text
-*.gif filter=lfs diff=lfs merge=lfs -text
-static/** filter=lfs diff=lfs merge=lfs -text
-=======
->>>>>>> 84dd71636b7ca3b8f16a2dfa268af72e1ac5a637
 . !text !filter !merge !diff
