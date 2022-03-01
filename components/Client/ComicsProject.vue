@@ -12,7 +12,7 @@ export default {
 
 <template>
 <div class="display__controller">
-    <div class="previewCard" v-for="index in 15" :key="index">
+    <div class="previewCard" v-for="index in 14" :key="index">
         <img :src="url+index+'.webp'" :alt="'Comics image no' + index" class="previewCard__image" height="100%" width="100%"/>
     </div>
 </div>
