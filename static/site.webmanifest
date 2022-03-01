@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:831535cbd5f7b8b83629048e25042c9a5add4644880c0b5f03322e9e29753e1b
-size 624
-=======
 {
     "name": "",
     "short_name": "",
@@ -22,4 +17,3 @@ size 624
     "background_color": "#ffffff",
     "display": "standalone"
 }
->>>>>>> 84dd71636b7ca3b8f16a2dfa268af72e1ac5a637
