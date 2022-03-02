@@ -4,12 +4,7 @@
         <transition name="overlayTrans"> 
             <div class="overlay" v-show="nav" @click="handleOverlay()"></div>
         </transition>
-        <!-- <i :class="[ham ? activeHam : 'fa-bars', 'fa-solid', 'hamburger']"  @click="hamburgerAction()"></i>   -->
-            <div :class="[{'testburger__open':hamHover}, {'testburger__click':hamClick},'testburger']"  @mouseenter="hamHover = !hamHover" @mouseleave="hamHover = !hamHover" @click="hamburgerAction()">
-                <span class="testburger__line testburger__line-1"></span>
-                <span class="testburger__line testburger__line-2"></span>
-                <span class="testburger__line testburger__line-3"></span>            
-            </div>
+            <Hamburger :ham_hover="hamHover" :ham_click="hamClick" @hamHoverAction="handleHamHover()" @hamClickAction="handleHamClick()"/>
 
         <div class="inner_controller">
         <header :class="['display__scroll', 'header']">
@@ -22,11 +17,6 @@
             </ul> 
         </header>
         <main :class="['display']" >
-            <!-- <LazyIllustration keep-alive v-if="tuts"></LazyIllustration>
-            <LazyComics keep-alive v-if="tuts"></LazyComics>
-            <LazyConceptArts keep-alive v-if="tuts"></LazyConceptArts>
-            <LazyCharacterDesign keep-alive v-if="tuts"></LazyCharacterDesign>
-            <LazyPortrait keep-alive v-if="tuts"></LazyPortrait> -->
             <NuxtDynamic :component="active" loading="eager"/>
         </main>
         </div>
@@ -61,11 +51,8 @@ export default {
            this.active = "Personal"+value ;
            this.nav = false;
            let classes = this.activeClass;
-        //    let updatedValue = value.toLowerCase()
-        //    console.log(updatedValue)
 
            for (const key in classes){
-            //  console.log(key);
              if (value == key){
                  this.activeClass[key] = true;
              }else if(value != key){
@@ -75,9 +62,12 @@ export default {
 
            };
         },
-        hamburgerAction(){
+        handleHamClick(){
             this.nav = !this.nav;
             this.hamClick = !this.hamClick;
+        },
+        handleHamHover(){
+            this.hamHover = !this.hamHover;
         },
         handleOverlay(){
             this.nav = !this.nav;
@@ -103,7 +93,6 @@ export default {
             console.log("yep")
             let classes = this.activeClass;
             for (const key in classes){
-                //  console.log(key);
                 let stace = this.$route.params.activeComponent;
                 
                 charge(stace);
@@ -120,11 +109,6 @@ export default {
             let stace = "Painting";
             charge(stace)
         }
-        // let value = this.$route.params.activeComponent;
-
-        //    let updatedValue = value.toLowerCase()
-        //    console.log(updatedValue)
-
     }
 }
 </script>
@@ -160,58 +144,7 @@ export default {
         
     }
 
-    .testburger{
-            width: fit-content;
-            height: 1.7em;
-            margin: 2.2em 0 0 2em;
-            position: fixed;
-            cursor: pointer;
-            padding:  0.2em;    
-            z-index: 99; 
-        
-        &__click{
-            & .testburger__line{
-                width: 1.4em;
-                &-1{
-                    background-color: $opa;
-                    transform: translateY(180%) rotate(-45deg);
-                }
-
-                &-2{
-                    width: 0;
-                }
-
-                &-3{
-                    background-color: $opa;
-                    transform: translateX(1%) rotate(45deg);
-                }
-            }
-        }
-
-        &__open{
-            & .testburger__line{
-                background-color: $primary;
-            }
-
-        }
-
-        &__line{
-            background-color: $opa;
-            width: 1.4em;
-            height: 0.158em;
-            display: block;
-            transition: width 0.1s, height 0.1s, transform 0.3s;
-
-            &-2{
-                transform: translateY(0.3em)
-            }
-
-            &-3{
-                transform: translateY(0.7em)
-            }
-        }
-    }
-
+    
     .active{
         color: $primary;
         text-shadow: 1px 0px 0px lighten($color: $opa, $amount: 60);
