@@ -63,12 +63,10 @@ export default {
            };
         },
         handleHamClick(){
-            console.log("omo bab");
             this.nav = !this.nav;
             this.hamClick = !this.hamClick;
         },
         handleHamHover(){
-            console.log("yea");
             this.hamHover = !this.hamHover;
         },
         handleOverlay(){
