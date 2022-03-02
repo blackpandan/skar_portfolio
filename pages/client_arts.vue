@@ -5,7 +5,7 @@
             <div class="overlay" v-show="nav" @click="handleOverlay()"></div>
         </transition>
 
-        <NavBar :ham_hover="hamHover" :ham_click="hamClick" @hamHoverAction="handleHamHover()" @hamClickAction="handleHamClick()"></NavBar>
+        <Hamburger :ham_hover="hamHover" :ham_click="hamClick" @hamHoverAction="handleHamHover()" @hamClickAction="handleHamClick()"></Hamburger>
 
         <div class="inner_controller">
         <header :class="['display__scroll', 'header']">
