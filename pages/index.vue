@@ -22,7 +22,7 @@ export default {
               {
                 hid: 'canonical',
                 rel: 'canonical',
-                href: '',
+                href: 'https://skarart.netlify.app',
               },{
         hid: 'og:title',
         property: 'og:title',

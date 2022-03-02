@@ -69,8 +69,19 @@ export default {
                     weird: 'hello'
                     }
                 }" 
-            v-for="(item, index) in cssVars" :key="index" class="card" :style="item.styles" :rel="item.name">
-                <img :src="item.url" alt="images for categories" class="card__image" height="100%" width="100%" />
+                v-for="(item, index) in cssVars" 
+                :key="index" 
+                class="card" 
+                :style="item.styles" 
+                :rel="item.name">
+                
+                <img 
+                    :src="item.url" 
+                    alt="images for categories" 
+                    :class="['card__image']"    
+                    height="100%" 
+                    width="100%" 
+                />
                 <div class="card__border">
                     <i class="card__text">{{ item.name }}</i>
                 </div>
