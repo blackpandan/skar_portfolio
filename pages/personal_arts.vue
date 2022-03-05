@@ -1,28 +1,3 @@
-<template>
-    <div class="controller_2">
-        <NavBar :show="nav" :x="nav"></NavBar>
-        <transition name="overlayTrans"> 
-            <div class="overlay" v-show="nav" @click="handleOverlay()"></div>
-        </transition>
-            <Hamburger :ham_hover="hamHover" :ham_click="hamClick" @hamHoverAction="handleHamHover()" @hamClickAction="handleHamClick()"/>
-
-        <div class="inner_controller">
-        <header :class="['display__scroll', 'header']">
-            <ul class="header__links">
-                <li @click="activate('Painting')" :class="[{'active': activeClass.Painting},'header__links-link']">painting</li>
-                <li @click="activate('Sketches')" :class="[{'active': activeClass.Sketches},'header__links-link']">sketches</li>
-                <li @click="activate('InkChallenge')" :class="[{'active': activeClass.InkChallenge},'header__links-link']">Challenge</li>
-                <li @click="activate('Illustration')" :class="[{'active': activeClass.Illustration},'header__links-link']">Illustration</li>
-                <li @click="activate('StrangeStrokes')" :class="[{'active': activeClass.StrangeStrokes},'header__links-link']">strange_strokes</li>
-            </ul> 
-        </header>
-        <main :class="['display']" >
-            <NuxtDynamic :component="active" loading="eager"/>
-        </main>
-        </div>
-    </div>    
-</template>
-
 <script>
 export default {
     data(){
@@ -43,7 +18,7 @@ export default {
                 'fa-xmark',
                 'xmark'
             ],
-            displayScroll: false
+            previewOverlay: false
         }
     },
     methods:{
@@ -76,6 +51,12 @@ export default {
         displayScrollAction(){
             this.displayScroll = !this.displayScroll;
             console.log('i don tire for')
+        },
+        handlePreviewOverlay(){
+            console.log("wow");
+        },
+        closePreviewOverlay(){
+            console.log("closed")
         }
     },
     created(){
@@ -113,9 +94,46 @@ export default {
 }
 </script>
 
+<template>
+    <div class="controller_2">
+        <NavBar :show="nav" :x="nav"></NavBar>
+        <transition name="overlayTrans"> 
+            <div class="overlay" v-show="nav" @click="handleOverlay()"></div>
+        </transition>
+            <Hamburger :ham_hover="hamHover" :ham_click="hamClick" @hamHoverAction="handleHamHover()" @hamClickAction="handleHamClick()"/>
+
+        <div class="inner_controller">
+            <header :class="['display__scroll', 'header']">
+                <ul class="header__links">
+                    <li @click="activate('Painting')" :class="[{'active': activeClass.Painting},'header__links-link']">painting</li>
+                    <li @click="activate('Sketches')" :class="[{'active': activeClass.Sketches},'header__links-link']">sketches</li>
+                    <li @click="activate('InkChallenge')" :class="[{'active': activeClass.InkChallenge},'header__links-link']">Challenge</li>
+                    <li @click="activate('Illustration')" :class="[{'active': activeClass.Illustration},'header__links-link']">Illustration</li>
+                    <li @click="activate('StrangeStrokes')" :class="[{'active': activeClass.StrangeStrokes},'header__links-link']">strange_strokes</li>
+                </ul> 
+            </header>
+            <main :class="['display']" >
+                <NuxtDynamic :component="active" loading="eager" @previewOverlayAction="handlePreviewOverlay()"/>
+            </main>
+           
+        </div>
+
+        <div class="previewOverlay" @click="closePreviewOverlay()">
+            <div class="previewOverlay__closeCover">
+                <span class="previewOverlay__close previewOverlay__close-1"></span>
+                <span class="previewOverlay__close previewOverlay__close-2"></span>
+            </div>
+            <img src="/pics/clients_work/character_design/1.webp" alt="" class="previewOverlay__image">
+        </div>
+    </div>    
+</template>
+
+
+
 <style lang="scss" scoped>
     .controller_2{
         display: flex;
+        overflow: hidden;
     }
 
     .inner_controller{
@@ -221,9 +239,12 @@ export default {
         z-index: 1;
         background-color: $chill;
         min-height: calc(130vh - 6em);
-        
+
         &__scroll{
             box-shadow: 0px 1px 0.3em 0px lighten($color: $primary, $amount: 18);
         }
+
     }
+
+    
 </style>
