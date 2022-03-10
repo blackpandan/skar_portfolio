@@ -1,29 +1,3 @@
-<template>
-    <div class="controller_2">
-        <NavBar :show="nav" :x="nav"></NavBar>
-        <transition name="overlayTrans"> 
-            <div class="overlay" v-show="nav" @click="handleOverlay()"></div>
-        </transition>
-
-        <Hamburger :ham_hover="hamHover" :ham_click="hamClick" @hamHoverAction="handleHamHover()" @hamClickAction="handleHamClick()"></Hamburger>
-
-        <div class="inner_controller">
-        <header :class="['display__scroll', 'header']">
-            <ul class="header__links">
-                <li @click="activate('Portrait')" :class="[{'active': activeClass.Portrait},'header__links-link']">portrait</li>
-                <li @click="activate('ConceptArt')" :class="[{'active': activeClass.ConceptArt},'header__links-link']">Concept</li>
-                <li @click="activate('CharacterDesign')" :class="[{'active': activeClass.CharacterDesign},'header__links-link']">Character</li>
-                <li @click="activate('Illustration')" :class="[{'active': activeClass.Illustration},'header__links-link']">Illustration</li>
-                <li @click="activate('ComicsProject')" :class="[{'active': activeClass.ComicsProject},'header__links-link']">Comics</li>
-            </ul> 
-        </header>
-        <main :class="['display']" >
-            <NuxtDynamic :component="active" loading="eager" />
-        </main>
-        </div>
-    </div>    
-</template>
-
 <script>
 export default {
     data(){
@@ -44,7 +18,8 @@ export default {
                 'fa-xmark',
                 'xmark'
             ],
-            displayScroll: false
+            previewOverlay: false,
+            gotten: {}
         }
     },
     methods:{
@@ -73,10 +48,15 @@ export default {
         handleOverlay(){
             this.nav = !this.nav;
             this.hamClick = !this.hamClick;        
-            },
-        displayScrollAction(){
-            this.displayScroll = !this.displayScroll;
-            console.log('i don tire for')
+        },
+        handlePreviewOverlay(value){
+            console.log(value);
+            this.gotten = value;
+            this.previewOverlay = true;
+        },
+        closePreviewOverlay(){
+            console.log("closed")
+            this.previewOverlay = false;
         }
     },
     created(){
@@ -94,7 +74,6 @@ export default {
             console.log("yep")
             let classes = this.activeClass;
             for (const key in classes){
-                //  console.log(key);
                 let stace = this.$route.params.activeComponent;
                 
                 charge(stace);
@@ -111,14 +90,48 @@ export default {
             let stace = "Portrait";
             charge(stace)
         }
-        // let value = this.$route.params.activeComponent;
-
-        //    let updatedValue = value.toLowerCase()
-        //    console.log(updatedValue)
-
     }
 }
 </script>
+
+<template>
+    <div class="controller_2">
+        <NavBar :show="nav" :x="nav"></NavBar>
+        <transition name="overlayTrans"> 
+            <div class="overlay" v-show="nav" @click="handleOverlay()"></div>
+        </transition>
+
+        <Hamburger :ham_hover="hamHover" :ham_click="hamClick" @hamHoverAction="handleHamHover()" @hamClickAction="handleHamClick()"></Hamburger>
+
+        <div class="inner_controller">
+        <header :class="['display__scroll', 'header']">
+            <ul class="header__links">
+                <li @click="activate('Portrait')" :class="[{'active': activeClass.Portrait},'header__links-link']">portrait</li>
+                <li @click="activate('ConceptArt')" :class="[{'active': activeClass.ConceptArt},'header__links-link']">Concept</li>
+                <li @click="activate('CharacterDesign')" :class="[{'active': activeClass.CharacterDesign},'header__links-link']">Character</li>
+                <li @click="activate('Illustration')" :class="[{'active': activeClass.Illustration},'header__links-link']">Illustration</li>
+                <li @click="activate('ComicsProject')" :class="[{'active': activeClass.ComicsProject},'header__links-link']">Comics</li>
+            </ul> 
+        </header>
+        <main :class="['display']" >
+            <NuxtDynamic :component="active" loading="eager" @previewOverlayAction="handlePreviewOverlay" />
+        </main>
+
+        </div>
+
+        <transition-group name="previewOverlayTrans" tag="div">
+        <div class="previewOverlay" v-if="previewOverlay" @click="closePreviewOverlay()" key="overlay">
+            <div class="previewOverlay__closeCover" @click="closePreviewOverlay()">
+                <span class="previewOverlay__close previewOverlay__close-1"></span>
+                <span class="previewOverlay__close previewOverlay__close-2"></span>
+            </div>
+        </div>
+            <img :src="'/pics/clients_work/'+ gotten.name +'/'+ gotten.index +'.webp'" :alt="gotten.name + gotten.index" :key="gotten.index" class="previewOverlay__image" v-if="previewOverlay">
+        </transition-group>
+    </div>    
+</template>
+
+
 
 <style lang="scss" scoped>
     .controller_2{
@@ -144,7 +157,7 @@ export default {
             transition: all .3s;
         }
 
-        &Trans-enter, &Trans-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        &Trans-enter, &Trans-leave-to {
           transform: translateX(150vmin); 
           opacity: 0;
         }

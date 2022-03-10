@@ -12,9 +12,7 @@ export default {
 
 <template>
 <div class="display__controller">
-    <div class="previewCard" v-for="index in 9" :key="index">
-        <img :src="url+index+'.webp'" :alt="'Sketches image no' + index" class="previewCard__image" height="100%" width="100%"/>
-    </div>
+   <PreviewCard v-for="index in 9" :key="index" :url="url" :index="index" @handlePreviewOverlay="$emit('previewOverlayAction', {'index':index, name: 'sketches'})"></PreviewCard>
 </div>
 </template>
 

@@ -23,7 +23,7 @@ export default {
             position: fixed;
             cursor: pointer;
             padding:  0.2em;    
-            z-index: 99; 
+            z-index: 10; 
         
         &__click{
             & .testburger__line{

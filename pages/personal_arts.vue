@@ -1,28 +1,3 @@
-<template>
-    <div class="controller_2">
-        <NavBar :show="nav" :x="nav"></NavBar>
-        <transition name="overlayTrans"> 
-            <div class="overlay" v-show="nav" @click="handleOverlay()"></div>
-        </transition>
-            <Hamburger :ham_hover="hamHover" :ham_click="hamClick" @hamHoverAction="handleHamHover()" @hamClickAction="handleHamClick()"/>
-
-        <div class="inner_controller">
-        <header :class="['display__scroll', 'header']">
-            <ul class="header__links">
-                <li @click="activate('Painting')" :class="[{'active': activeClass.Painting},'header__links-link']">painting</li>
-                <li @click="activate('Sketches')" :class="[{'active': activeClass.Sketches},'header__links-link']">sketches</li>
-                <li @click="activate('InkChallenge')" :class="[{'active': activeClass.InkChallenge},'header__links-link']">Challenge</li>
-                <li @click="activate('Illustration')" :class="[{'active': activeClass.Illustration},'header__links-link']">Illustration</li>
-                <li @click="activate('StrangeStrokes')" :class="[{'active': activeClass.StrangeStrokes},'header__links-link']">strange_strokes</li>
-            </ul> 
-        </header>
-        <main :class="['display']" >
-            <NuxtDynamic :component="active" loading="eager"/>
-        </main>
-        </div>
-    </div>    
-</template>
-
 <script>
 export default {
     data(){
@@ -43,11 +18,11 @@ export default {
                 'fa-xmark',
                 'xmark'
             ],
-            displayScroll: false
+            previewOverlay: false
         }
     },
     methods:{
-        activate(value){
+         activate(value){
            this.active = "Personal"+value ;
            this.nav = false;
            let classes = this.activeClass;
@@ -72,10 +47,15 @@ export default {
         handleOverlay(){
             this.nav = !this.nav;
             this.hamClick = !this.hamClick;        
-            },
-        displayScrollAction(){
-            this.displayScroll = !this.displayScroll;
-            console.log('i don tire for')
+        },
+        handlePreviewOverlay(value){
+            console.log(value);
+            this.gotten = value;
+            this.previewOverlay = true;
+        },
+        closePreviewOverlay(){
+            console.log("closed")
+            this.previewOverlay = false;
         }
     },
     created(){
@@ -113,9 +93,48 @@ export default {
 }
 </script>
 
+<template>
+    <div class="controller_2">
+        <NavBar :show="nav" :x="nav"></NavBar>
+        <transition name="overlayTrans"> 
+            <div class="overlay" v-show="nav" @click="handleOverlay()"></div>
+        </transition>
+            <Hamburger :ham_hover="hamHover" :ham_click="hamClick" @hamHoverAction="handleHamHover()" @hamClickAction="handleHamClick()"/>
+
+        <div class="inner_controller">
+            <header :class="['display__scroll', 'header']">
+                <ul class="header__links">
+                    <li @click="activate('Painting')" :class="[{'active': activeClass.Painting},'header__links-link']">painting</li>
+                    <li @click="activate('Sketches')" :class="[{'active': activeClass.Sketches},'header__links-link']">sketches</li>
+                    <li @click="activate('InkChallenge')" :class="[{'active': activeClass.InkChallenge},'header__links-link']">Challenge</li>
+                    <li @click="activate('Illustration')" :class="[{'active': activeClass.Illustration},'header__links-link']">Illustration</li>
+                    <li @click="activate('StrangeStrokes')" :class="[{'active': activeClass.StrangeStrokes},'header__links-link']">strange_strokes</li>
+                </ul> 
+            </header>
+             <main :class="['display']" >
+            <NuxtDynamic :component="active" loading="eager" @previewOverlayAction="handlePreviewOverlay" />
+        </main>
+
+        </div>
+
+        <transition-group name="previewOverlayTrans" tag="div">
+        <div class="previewOverlay" v-if="previewOverlay" @click="closePreviewOverlay()" key="overlay">
+            <div class="previewOverlay__closeCover" @click="closePreviewOverlay()">
+                <span class="previewOverlay__close previewOverlay__close-1"></span>
+                <span class="previewOverlay__close previewOverlay__close-2"></span>
+            </div>
+        </div>
+            <img :src="'/pics/personal/'+ gotten.name +'/'+ gotten.index +'.webp'" :alt="gotten.name + gotten.index" :key="gotten.index" class="previewOverlay__image" v-if="previewOverlay">
+        </transition-group>
+    </div>    
+</template>
+
+
+
 <style lang="scss" scoped>
     .controller_2{
         display: flex;
+        overflow: hidden;
     }
 
     .inner_controller{
@@ -221,9 +240,12 @@ export default {
         z-index: 1;
         background-color: $chill;
         min-height: calc(130vh - 6em);
-        
+
         &__scroll{
             box-shadow: 0px 1px 0.3em 0px lighten($color: $primary, $amount: 18);
         }
+
     }
+
+    
 </style>
