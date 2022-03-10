@@ -79,7 +79,8 @@ export default {
   ],
 
   sitemap: {
-    hostname: process.env.SITEMAP_HOSTNAME,
+    hostname: "https://skarstrokes.com",
+    gzip: true
   },
 
   styleResources: {
