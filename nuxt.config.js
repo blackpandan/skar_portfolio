@@ -78,6 +78,9 @@ export default {
     // '@nuxtjs/sitemap'
   ],
 
+  sitemap: {
+    hostname: process.env.SITEMAP_HOSTNAME,
+  },
 
   styleResources: {
     scss: ['./assets/scss/*.scss']
