@@ -67,7 +67,8 @@ export default {
   buildModules: [
     '@nuxtjs/style-resources',
     '@nuxt/image',
-    '@nuxtjs/device'
+    '@nuxtjs/device',
+    '@nuxtjs/sitemap'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
