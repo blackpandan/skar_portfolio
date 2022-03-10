@@ -12,7 +12,7 @@ export default {
 
 <template>
 <div class="display__controller">
-   <PreviewCard v-for="index in 13" :key="index" :url="url" :index="index" @handlePreviewOverlay="$emit('previewOverlayAction')"></PreviewCard>
+  <PreviewCard v-for="index in 13" :key="index" :url="url" :index="index" @handlePreviewOverlay="$emit('previewOverlayAction', {'index':index, name: 'paintings'})"></PreviewCard>
 </div>
 </template>
 

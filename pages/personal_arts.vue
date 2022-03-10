@@ -22,7 +22,7 @@ export default {
         }
     },
     methods:{
-        activate(value){
+         activate(value){
            this.active = "Personal"+value ;
            this.nav = false;
            let classes = this.activeClass;
@@ -47,16 +47,15 @@ export default {
         handleOverlay(){
             this.nav = !this.nav;
             this.hamClick = !this.hamClick;        
-            },
-        displayScrollAction(){
-            this.displayScroll = !this.displayScroll;
-            console.log('i don tire for')
         },
-        handlePreviewOverlay(){
-            console.log("wow");
+        handlePreviewOverlay(value){
+            console.log(value);
+            this.gotten = value;
+            this.previewOverlay = true;
         },
         closePreviewOverlay(){
             console.log("closed")
+            this.previewOverlay = false;
         }
     },
     created(){
@@ -112,19 +111,21 @@ export default {
                     <li @click="activate('StrangeStrokes')" :class="[{'active': activeClass.StrangeStrokes},'header__links-link']">strange_strokes</li>
                 </ul> 
             </header>
-            <main :class="['display']" >
-                <NuxtDynamic :component="active" loading="eager" @previewOverlayAction="handlePreviewOverlay()"/>
-            </main>
-           
+             <main :class="['display']" >
+            <NuxtDynamic :component="active" loading="eager" @previewOverlayAction="handlePreviewOverlay" />
+        </main>
+
         </div>
 
-        <div class="previewOverlay" @click="closePreviewOverlay()">
-            <div class="previewOverlay__closeCover">
+        <transition-group name="previewOverlayTrans" tag="div">
+        <div class="previewOverlay" v-if="previewOverlay" @click="closePreviewOverlay()" key="overlay">
+            <div class="previewOverlay__closeCover" @click="closePreviewOverlay()">
                 <span class="previewOverlay__close previewOverlay__close-1"></span>
                 <span class="previewOverlay__close previewOverlay__close-2"></span>
             </div>
-            <img src="/pics/clients_work/character_design/1.webp" alt="" class="previewOverlay__image">
         </div>
+            <img :src="'/pics/personal/'+ gotten.name +'/'+ gotten.index +'.webp'" :alt="gotten.name + gotten.index" :key="gotten.index" class="previewOverlay__image" v-if="previewOverlay">
+        </transition-group>
     </div>    
 </template>
 
