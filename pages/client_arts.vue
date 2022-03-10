@@ -53,7 +53,6 @@ export default {
             console.log(value);
             this.gotten = value;
             this.previewOverlay = true;
-            // this.gottenIndex = value;
         },
         closePreviewOverlay(){
             console.log("closed")
@@ -75,7 +74,6 @@ export default {
             console.log("yep")
             let classes = this.activeClass;
             for (const key in classes){
-                //  console.log(key);
                 let stace = this.$route.params.activeComponent;
                 
                 charge(stace);
@@ -92,11 +90,6 @@ export default {
             let stace = "Portrait";
             charge(stace)
         }
-        // let value = this.$route.params.activeComponent;
-
-        //    let updatedValue = value.toLowerCase()
-        //    console.log(updatedValue)
-
     }
 }
 </script>
@@ -164,7 +157,7 @@ export default {
             transition: all .3s;
         }
 
-        &Trans-enter, &Trans-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        &Trans-enter, &Trans-leave-to {
           transform: translateX(150vmin); 
           opacity: 0;
         }

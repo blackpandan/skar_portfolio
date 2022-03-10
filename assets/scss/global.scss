@@ -16,13 +16,9 @@
 .previewCard{
     width: 40vmin;
     height: 50vmin;
-    // background-color: green;
     margin: 4em 0 0 0;
     box-shadow: 0 70px 63px -60px #000000;
     border-radius: 2vmin;
-    // background-position: center center;
-    // background-size: cover;
-    // background-repeat: no-repeat;
     cursor: pointer;
 
     &__image{
@@ -38,10 +34,7 @@
         position: relative;
         display: flex;
         flex-flow: row wrap;
-        // align-content: '';
         justify-content: center;
-        // align-items: space-evenly;
-        // place-items: ;
         min-height: 100%;
         margin: 0 0 auto 40vmin;
         padding: 1vmin 5vmin 1vmin 5vmin;
