@@ -82,6 +82,9 @@ export default {
     <NavBar :show="nav" :x="nav" v-if="$device.isMobile"></NavBar>
     <MobNavBar v-if="$device.isMobile" ></MobNavBar>
 
+    <transition name="overlayTrans"> 
+      <div class="overlay" v-show="nav" @click="handleOverlay()"></div>
+    </transition>
     <Hamburger v-if="$device.isMobile" :ham_hover="hamHover" :ham_click="hamClick" @hamHoverAction="handleHamHover()" @hamClickAction="handleHamClick()"/>
         
         <main class="main">

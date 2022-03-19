@@ -1,9 +1,26 @@
 <script>
 export default {
+     data(){
+    return {
+      nav: false,
+      hamHover: false,
+      hamClick: false
+    }
+    },
     methods: {
         convertS(value){
             return value.split(' ').join('')
-        }
+        },handleHamClick(){
+            this.nav = !this.nav;
+            this.hamClick = !this.hamClick;
+    },
+    handleHamHover(){
+            this.hamHover = !this.hamHover;
+    },
+    handleOverlay(){
+            this.nav = !this.nav;
+            this.hamClick = !this.hamClick;        
+    }
     },
     computed: {
 
@@ -60,7 +77,16 @@ export default {
 <transition name="fade">
     <div class="controller">
         
-        <NavBar :show="true" :x="false"></NavBar>
+         <NavBar :show="true" :x="false" v-if="$device.isDesktopOrTablet"></NavBar>
+
+    <NavBar :show="nav" :x="nav" v-if="$device.isMobile"></NavBar>
+    <MobNavBar v-if="$device.isMobile" ></MobNavBar>
+
+    <transition name="overlayTrans"> 
+      <div class="overlay" v-show="nav" @click="handleOverlay()"></div>
+    </transition>
+    <Hamburger v-if="$device.isMobile" :ham_hover="hamHover" :ham_click="hamClick" @hamHoverAction="handleHamHover()" @hamClickAction="handleHamClick()"/>
+        
         <main class="main">
             <NuxtLink :to="{
                 name:'client_arts', 

@@ -225,6 +225,20 @@ export default {
         }
     }
 
+
+@media only screen and (max-width: 780px) {
+    .header{
+        &__links{
+            padding: 0 0 0 0;
+
+            &-link{
+                margin: 0;
+                font-size: 0.5em;
+            }
+        }
+    }
+}
+
     .xmark{
         &:hover{
             color: $secondary;
