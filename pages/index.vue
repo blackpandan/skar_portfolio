@@ -1,12 +1,3 @@
-<template>
-  <div class="controller">
-    <NavBar :show="true" :x="false" v-if="$device.isDesktopOrTablet"></NavBar>
-    <main class="main__home">
-      <img class="main__image" src="pics/clients_work/portrait/2.webp" style="object-fit:cover" width="100%" height="100%" alt="portrait of a lady"/>
-    </main>
-</div>
-</template>
-
 <script>
 export default {
   name: 'IndexPage',
@@ -54,9 +45,52 @@ export default {
       },
       ]
     }
+  },
+  data(){
+    return {
+      nav: false,
+      hamHover: false,
+      hamClick: false
+    }
+  },
+  methods: {
+    handleHamClick(){
+            this.nav = !this.nav;
+            this.hamClick = !this.hamClick;
+    },
+    handleHamHover(){
+            this.hamHover = !this.hamHover;
+    },
+    handleOverlay(){
+            this.nav = !this.nav;
+            this.hamClick = !this.hamClick;        
+    }
   }
 }
 </script>
+
+
+<template>
+  <div class="controller">
+    
+    <NavBar :show="true" :x="false" v-if="$device.isDesktopOrTablet"></NavBar>
+
+    <NavBar :show="nav" :x="nav" v-if="$device.isMobile"></NavBar>
+    <MobNavBar v-if="$device.isMobile" ></MobNavBar>
+    
+    
+    <transition name="overlayTrans"> 
+      <div class="overlay" v-show="nav" @click="handleOverlay()"></div>
+    </transition>
+    <Hamburger v-if="$device.isMobile" :ham_hover="hamHover" :ham_click="hamClick" @hamHoverAction="handleHamHover()" @hamClickAction="handleHamClick()"/>
+    
+    <main class="main__home">
+      <img class="main__image" src="pics/clients_work/portrait/2.webp" style="object-fit:cover" width="100%" height="100%" alt="portrait of a lady"/>
+    </main>
+
+</div>
+</template>
+
 
 <style lang="scss">
 
@@ -104,6 +138,48 @@ export default {
       height: 100%;
       object-fit: cover;
       object-position: 50% 50%;
+    }
+  }
+
+.overlay{
+        background-color: black;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        z-index: 3;
+        opacity: 0.8;
+        transition: all 3s ease;
+
+        &Trans-enter-active, &Trans-leave-active {
+            transition: all .3s;
+        }
+
+        &Trans-enter, &Trans-leave-to /* .fade-leave-active below version 2.1.8 */ {
+          transform: translateX(150vmin); 
+          opacity: 0;
+        }
+        
+    }
+
+  @media only screen and (max-width: 780px){
+    .main{
+      &__home{
+        width: 100%;
+        margin: 0 0 0 0;
+
+        // &:before{
+        //   content: "";
+        //   position: fixed;
+        //   background: linear-gradient(#e6646400, #ffffff);;
+        //   top: 0;
+        //   right: 0;
+        //   width: 100vw;
+        //   height: 10vh;
+        //   z-index: 0;
+        // }
+      
+      }
+
     }
   }
 </style>
