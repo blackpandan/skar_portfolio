@@ -47,7 +47,7 @@ export default {
       <section class="contact__innerController-upper">
         <h1 class="contact__head">Contact me</h1>
           <p class="contact__subhead">
-            Feel free to ask me questions and talk about business inquires
+            Feel free to ask me questions regarding artworks, commissions and business inquiries
           </p>
       </section>
 
@@ -147,5 +147,25 @@ Message</textarea
           }
       }
   }
+}
+
+@media only screen and (min-width: 780px){
+    .contact{
+
+        &__head{
+            font-size: 3em;
+            margin: 0;
+        }
+
+        &__subhead{
+            font-size: 1.2em;
+            color: darken($chill, 40);
+            line-height: 1.5em;
+        }
+        &__innerController{
+            width: 60vw;
+            margin: 0 0 0 40vmin;
+        }
+    }
 }
 </style>
