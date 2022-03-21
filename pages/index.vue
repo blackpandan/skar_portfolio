@@ -86,6 +86,13 @@ export default {
     
     <main class="main__home">
       <img class="main__image" src="pics/clients_work/portrait/2.webp" style="object-fit:cover" width="100%" height="100%" alt="portrait of a lady"/>
+    
+      <section class="main__text">
+        <div class="main__text-controller">
+          <p class="main__text-text">leap into the mind of a professional artist</p>
+          <NuxtLink to="/personal_pass" class="main__text-button">view works</NuxtLink>
+        </div>
+      </section>
     </main>
 
 </div>
@@ -134,10 +141,58 @@ export default {
     }
 
     &__image{
+      position: relative;
+      z-index: 1;
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: 50% 50%;
+    }
+
+    &__text{
+      position: absolute;
+      z-index: 2;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      overflow: hidden;
+      padding: 1em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &-text{
+        color: $chill;
+        font-size: 1.4em;
+        line-height: 1.6em;
+      }
+
+      &-button{
+        background-color: $primary-no;
+        color: $chill;
+        border: none;
+        padding: 0.7em 20% 0.7em 20%;
+        border-radius: 1em;
+        font-size: 1.2em;
+        text-decoration: none;
+        display: block;
+        // width: fit-content;
+        margin: 1.5em auto auto auto;
+        letter-spacing: 0.1em;
+
+        &:hover{
+          background-color: $chill;
+          color: $primary-no;
+        }
+      }
+
+      &-controller{
+        width: fit-content;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.356);
+        padding: 1.5em 2em 1.5em 2em;
+        border-radius: 1em;
+      }
     }
   }
 
