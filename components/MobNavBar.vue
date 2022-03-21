@@ -22,6 +22,7 @@ export default {
     justify-content: center;
     padding: 0 0 0 0;
     background: linear-gradient(rgb(180, 180, 180), white);
+    z-index: 2;
 
     &__header{
         font-size: 1.5em;
