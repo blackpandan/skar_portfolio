@@ -196,6 +196,16 @@ export default {
     }
   }
 
+@media only screen and (min-width: 780px){
+  .main{
+    &__text{
+      &-controller{
+        margin: 0 0 0 40vmin;
+      }
+    }
+  }
+}
+
 .overlay{
         background-color: black;
         position: fixed;
