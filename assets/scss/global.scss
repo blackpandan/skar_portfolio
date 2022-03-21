@@ -39,6 +39,8 @@
     box-shadow: 0 70px 63px -60px #000000;
     border-radius: 2vmin;
     cursor: pointer;
+    border: 1px solid rgb(104, 104, 104);
+    overflow: hidden;
 
     &__image{
         width: 100%;
@@ -121,6 +123,7 @@
         transition: border-radius 0.2s, background-position 1s, background-size 1s, box-shadow 0.2s;
         font-style: normal;
         overflow: hidden;
+        border: 1px solid white;
 
         &__text{
             font-family: "Fahkwang";
