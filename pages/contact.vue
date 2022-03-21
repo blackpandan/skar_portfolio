@@ -88,6 +88,7 @@ Message</textarea
   &__subhead{
       color: darken($chill, 20);
       padding: 1em 0 2em 0;
+      line-height: 1.6em;
   }
   
   &__controller {
