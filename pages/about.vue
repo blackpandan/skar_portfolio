@@ -96,6 +96,9 @@ export default {
             border-radius: 15vw;
             width: 50vw;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin: 2em 0 0 0;
             &-img{
                 width: 100%;
