@@ -52,10 +52,10 @@ export default {
       </section>
 
       <section class="contact__innerController-lower">
-        <form class="contact__form" action="mailto:gktechville@gmail.com" method="POST" enctype="multipart/form-datat">
+        <form class="contact__form" name="contact" action="mailto:elbubajoshua007@gmail.com" method="POST" target="_blank">
           <input
             type="text"
-            name="name"
+            name="subject"
             placeholder="Your Name"
             class="contact__form-input"
           />
