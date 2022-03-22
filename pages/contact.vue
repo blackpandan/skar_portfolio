@@ -52,7 +52,7 @@ export default {
       </section>
 
       <section class="contact__innerController-lower">
-        <form class="contact__form" action="mailto:gktechville@gmail.com">
+        <form class="contact__form" action="mailto:gktechville@gmail.com" method="POST" enctype="multipart/form-datat">
           <input
             type="text"
             name="name"
