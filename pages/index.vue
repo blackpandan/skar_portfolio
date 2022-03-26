@@ -50,7 +50,9 @@ export default {
     return {
       nav: false,
       hamHover: false,
-      hamClick: false
+      hamClick: false,
+      slide:  {}
+      
     }
   },
   methods: {
@@ -64,7 +66,121 @@ export default {
     handleOverlay(){
             this.nav = !this.nav;
             this.hamClick = !this.hamClick;        
+    },
+    handleSlide(){
+      let slides = [ 
+        {
+          "img": "pics/clients_work/portrait/2.webp",
+          "text": "leap into the mind of a professional artist",
+          "link": "/personal_pass",
+          "link_text":"view works",
+          "index": 1
+        },
+        {
+          "img": "pics/slides/3.webp",
+          "text": "strange strokes from a brushes of an artist",
+          "link": {
+                name:'personal_arts', 
+                params: {
+                    activeComponent: "StrangeStrokes", 
+                    weird: 'hello'
+                    }
+                },
+          "link_text":"strange strokes",
+          "index": 2
+        },
+        {
+          "img": "pics/slides/2.webp",
+          "text": "30 days ink challenge",
+          "link": {
+                name:'personal_arts', 
+                params: {
+                    activeComponent: "InkChallenge", 
+                    weird: 'hello'
+                    }
+                },
+          "link_text":"view works",
+          "index": 3
+        },
+        {
+          "img": "pics/slides/4.webp",
+          "text": "Concept art for clients",
+          "link": {
+                name:'client_arts', 
+                params: {
+                    activeComponent: "ConceptArt", 
+                    weird: 'hello'
+                    }
+                },
+          "link_text":"view works",
+          "index": 4
+        }]
+
+
     }
+  },
+  created(){
+    let slides = [ 
+        {
+          "img": "pics/clients_work/portrait/2.webp",
+          "text": "leap into the mind of a professional artist",
+          "link": "/personal_pass",
+          "link_text":"view works",
+          "index": 1
+        },
+        {
+          "img": "pics/slides/3.webp",
+          "text": "strange strokes from a brushes of an artist",
+          "link": {
+                name:'personal_arts', 
+                params: {
+                    activeComponent: "StrangeStrokes", 
+                    weird: 'hello'
+                    }
+                },
+          "link_text":"strange strokes",
+          "index": 2
+        },
+        {
+          "img": "pics/slides/2.webp",
+          "text": "30 days ink challenge",
+          "link": {
+                name:'personal_arts', 
+                params: {
+                    activeComponent: "InkChallenge", 
+                    weird: 'hello'
+                    }
+                },
+          "link_text":"view works",
+          "index": 3
+        },
+        {
+          "img": "pics/slides/4.webp",
+          "text": "Concept art for clients",
+          "link": {
+                name:'client_arts', 
+                params: {
+                    activeComponent: "ConceptArt", 
+                    weird: 'hello'
+                    }
+                },
+          "link_text":"view works",
+          "index": 4
+        }]
+
+        let n = 0;
+
+        this.slide = slides[n]
+
+        setInterval(function(){
+          if(n < 4){
+          this.slide = slides[n]
+          n++
+          }else{
+            n = 0;
+          }
+        }.bind(this), 4000);
+
   }
 }
 </script>
@@ -85,12 +201,12 @@ export default {
     <Hamburger v-if="$device.isMobile" :ham_hover="hamHover" :ham_click="hamClick" @hamHoverAction="handleHamHover()" @hamClickAction="handleHamClick()"/>
     
     <main class="main__home">
-      <img class="main__image" src="pics/clients_work/portrait/2.webp" style="object-fit:cover" width="100%" height="100%" alt="portrait of a lady"/>
+      <img rel="preload" class="main__image" :src="slide.img" style="object-fit:cover" width="100%" height="100%" alt="portrait of a lady"/>
     
       <section class="main__text">
         <div class="main__text-controller">
-          <p class="main__text-text">leap into the mind of a professional artist</p>
-          <NuxtLink to="/personal_pass" class="main__text-button">view works</NuxtLink>
+          <p class="main__text-text">{{slide.text}}</p>
+          <NuxtLink :to="slide.link" class="main__text-button">{{ slide.link_text}}</NuxtLink>
         </div>
       </section>
     </main>
@@ -189,7 +305,7 @@ export default {
       &-controller{
         width: fit-content;
         text-align: center;
-        background-color: rgba(0, 0, 0, 0.356);
+        background-color: rgba(0, 0, 0, 0.514);
         padding: 1.5em 2em 1.5em 2em;
         border-radius: 1em;
       }
