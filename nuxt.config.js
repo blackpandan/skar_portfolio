@@ -47,7 +47,8 @@ export default {
       href: '/site.webmanifest',
     },
     ],
-    script:[
+    script: [
+      {hid:"fontawesome", src:"https://kit.fontawesome.com/4c4a079b95.js", crossorigin:"anonymous", defer: true}
     ]
   },
   // Global CSS: https://go.nuxtjs.dev/config-css

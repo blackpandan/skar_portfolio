@@ -11,6 +11,11 @@
         <NuxtLink to="/about" class="nav__links-link" rel="about">ABOUT</NuxtLink>
         <NuxtLink to="/contact" class="nav__links-link" rel="contact">CONTACT</NuxtLink>
       </div>
+      <div class="socialLinks">
+        <a href="https://patreon.com/skar" class="socialLinks__link"><i class="fa-brands fa-patreon"></i></a>
+        <a href="https://twitter.com/elbuba_joshua" class="socialLinks__link"><i class="fa-brands fa-twitter"></i></a>
+        <a href="https://instagram.com/i.am.skar" class="socialLinks__link"><i class="fa-brands fa-instagram"></i></a>
+      </div>
     </nav>
  </transition>
 </template>
@@ -101,5 +106,37 @@ export default {
       }
     }
 }
+
+.socialLinks{
+
+  position: absolute;
+  bottom: 15vh;
+  left: 0;
+  width: 100%;
+  text-align: center;
+
+  &__link{
+    color: black;
+
+     &:hover{
+      color: $primary-no;
+    }
+    
+    &:not(:first-child){
+      margin: 0 0 0 1.3em;
+    }
+
+    & i{
+      font-size: 1.3em;
+    }
+  }
+}
+
+@media only screen and (min-width: 780px){
+  .socialLinks{
+    bottom: 10vh;
+  }
+}
+
 
 </style>
