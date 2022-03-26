@@ -130,7 +130,7 @@ export default {
         },
         {
           "img": "pics/slides/3.webp",
-          "text": "strange strokes from a brushes of an artist",
+          "text": "strange strokes from the brush of an artist",
           "link": {
                 name:'personal_arts', 
                 params: {
