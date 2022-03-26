@@ -73,6 +73,12 @@ Message</textarea
         </form>
       </section>
     </main>
+
+    <section class="socialLinks">
+       <a href="https://patreon.com/skar" class="socialLinks__link"><i class="fa-brands fa-patreon"></i></a>
+        <a href="https://twitter.com/elbuba_joshua" class="socialLinks__link"><i class="fa-brands fa-twitter"></i></a>
+        <a href="https://instagram.com/i.am.skar" class="socialLinks__link"><i class="fa-brands fa-instagram"></i></a>
+    </section>
   </div>
 </template>
 
@@ -168,5 +174,30 @@ Message</textarea
             margin: 0 0 0 40vmin;
         }
     }
+}
+
+.socialLinks{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  &__link{
+    color: grey;
+    font-size: 1.8em;
+
+   
+
+    &:not(:first-child){
+      margin: 0 0 0 1em;
+    }
+
+
+  }
+}
+
+@media only screen and (min-width:780px){
+  .socialLinks{
+    display: none;
+  }
 }
 </style>
