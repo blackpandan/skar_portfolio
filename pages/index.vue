@@ -51,76 +51,9 @@ export default {
       nav: false,
       hamHover: false,
       hamClick: false,
-      slide:  {}
-      
-    }
-  },
-  methods: {
-    handleHamClick(){
-            this.nav = !this.nav;
-            this.hamClick = !this.hamClick;
-    },
-    handleHamHover(){
-            this.hamHover = !this.hamHover;
-    },
-    handleOverlay(){
-            this.nav = !this.nav;
-            this.hamClick = !this.hamClick;        
-    },
-    handleSlide(){
-      let slides = [ 
-        {
-          "img": "pics/clients_work/portrait/2.webp",
-          "text": "leap into the mind of a professional artist",
-          "link": "/personal_pass",
-          "link_text":"view works",
-          "index": 1
-        },
-        {
-          "img": "pics/slides/3.webp",
-          "text": "strange strokes from a brushes of an artist",
-          "link": {
-                name:'personal_arts', 
-                params: {
-                    activeComponent: "StrangeStrokes", 
-                    weird: 'hello'
-                    }
-                },
-          "link_text":"strange strokes",
-          "index": 2
-        },
-        {
-          "img": "pics/slides/2.webp",
-          "text": "30 days ink challenge",
-          "link": {
-                name:'personal_arts', 
-                params: {
-                    activeComponent: "InkChallenge", 
-                    weird: 'hello'
-                    }
-                },
-          "link_text":"view works",
-          "index": 3
-        },
-        {
-          "img": "pics/slides/4.webp",
-          "text": "Concept art for clients",
-          "link": {
-                name:'client_arts', 
-                params: {
-                    activeComponent: "ConceptArt", 
-                    weird: 'hello'
-                    }
-                },
-          "link_text":"view works",
-          "index": 4
-        }]
-
-
-    }
-  },
-  created(){
-    let slides = [ 
+      n : 0,
+      slide:  {},
+      slides:[ 
         {
           "img": "pics/clients_work/portrait/2.webp",
           "text": "leap into the mind of a professional artist",
@@ -168,13 +101,63 @@ export default {
           "index": 4
         }]
 
-        let n = 0;
+      
+    }
+  },
+  methods: {
+    handleHamClick(){
+            this.nav = !this.nav;
+            this.hamClick = !this.hamClick;
+    },
+    handleHamHover(){
+            this.hamHover = !this.hamHover;
+    },
+    handleOverlay(){
+            this.nav = !this.nav;
+            this.hamClick = !this.hamClick;        
+    },
+    prev(){
+      if (this.n < 4){
 
-        this.slide = slides[n]
+          if(this.n==0){
+            this.n = 3;
+            console.log(this.n)
+            this.slide = this.slides[this.n];
+          }else{
+          this.n--;
+          this.slide = this.slides[this.n];
+          }
+
+
+      }else{
+        this.n = 0;
+        console.log("ewwey")
+      }
+    },
+  next(){
+
+    if ( this.n < 4){
+      this.slide = this.slides[ this.n];
+       this.n++
+    }
+    else{
+       this.n = 0;
+      this.slide = this.slides[ this.n];
+    }
+
+  }
+  },
+
+  created(){
+
+    let n = this.n;
+
+        this.slide = this.slides[n];
 
         setInterval(function(){
+
           if(n < 4){
-          this.slide = slides[n]
+          this.slide = this.slides[n];
           n++
           }else{
             n = 0;
@@ -209,6 +192,9 @@ export default {
           <NuxtLink :to="slide.link" class="main__text-button">{{ slide.link_text}}</NuxtLink>
         </div>
       </section>
+
+      <i class="fa-solid fa-circle-arrow-left leftArrow" @click="prev"></i>
+      <i class="fa-solid fa-circle-arrow-right rightArrow" @click="next"></i>
     </main>
 
 </div>
@@ -243,6 +229,34 @@ export default {
   }
 
 
+
+.leftArrow{
+  color: rgba(255, 255, 255, 0.281);
+  font-size: 2.5em;
+  position: relative;
+  top: -60%;
+  left: 8px;
+  z-index: 2;
+  cursor: pointer;
+
+  &:hover{
+    color: rgba(255, 255, 255, 0.897);
+  }
+}
+
+.rightArrow{
+  color: rgba(255, 255, 255, 0.281);
+  font-size: 2.5em;
+  position: absolute;
+  top: 45%;
+  right: 8px;
+  z-index: 2;
+  cursor: pointer;
+
+  &:hover{
+    color: rgba(255, 255, 255, 0.897);
+  }
+}
   
   .main{
     &__home{
