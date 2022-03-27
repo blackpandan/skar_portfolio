@@ -69,8 +69,38 @@ export default {
     '@nuxtjs/style-resources',
     '@nuxt/image',
     '@nuxtjs/device',
-    '@nuxtjs/sitemap'
+    'nuxt-gsap-module',
+    '@nuxtjs/sitemap',
   ],
+  pageTransition: {
+    name: 'page',
+    mode: 'out-in',
+    css: false,
+
+    beforeEnter(el) {
+      this.$gsap.set(el, {
+        opacity: 0.5
+      })
+    },
+
+    enter(el, done) {
+      this.$gsap.to(el, {
+        opacity: 1,
+        duration: 0.5,
+        ease: 'power2.inOut',
+        onComplete: done
+      })
+    },
+
+    leave(el, done) {
+      this.$gsap.to(el, {
+        opacity: 0.5,
+        duration: 0.5,
+        ease: 'power2.inOut',
+        onComplete: done
+      })
+    }
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [

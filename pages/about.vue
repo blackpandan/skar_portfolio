@@ -77,9 +77,11 @@ export default {
                 padding: 1em 0 1em 0;
                 text-align: center;
                 // background-color: white;
-                background: linear-gradient(to left, violet, rgb(120, 3, 204), rgb(75, 147, 255), green, yellow, orange, rgb(252, 0, 176));
-                background-clip: text;
-                color: transparent;
+                // background: linear-gradient(to left, violet, rgb(120, 3, 204), rgb(75, 147, 255), green, yellow, orange, rgb(252, 0, 176));
+                // background-clip: text;
+                color: rgb(226, 226, 226);
+                text-shadow: 3px 2px $primary-no;
+                letter-spacing: 0.2em;
                 font-size: 2em;
             }
 

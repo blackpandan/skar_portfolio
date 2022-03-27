@@ -121,7 +121,6 @@ export default {
 
           if(this.n==0){
             this.n = 3;
-            console.log(this.n)
             this.slide = this.slides[this.n];
           }else{
           this.n--;
