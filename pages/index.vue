@@ -3,7 +3,7 @@ export default {
   name: 'IndexPage',
   head(){
     return{
-      title: "Skar Professional Artist",
+      title: "Skar | Professional Artist",
       meta: [
               {
                 hid: "description",
@@ -17,7 +17,7 @@ export default {
               },{
         hid: 'og:title',
         property: 'og:title',
-        content: 'Skar Professional Artist',
+        content: 'Skar | Professional Artist',
       },
       {
         hid: 'og:description',
@@ -32,7 +32,7 @@ export default {
       {
         hid: 'og:image',
         property: 'og:image',
-        content: '5.jpg',
+        content: '/pics/5.jpg',
       },
       {
         hid: 'og:url',
@@ -43,6 +43,12 @@ export default {
         property: 'og:locale',
         content: 'en_NG',
       },
+      {name:"twitter:card", content:"summary_large_image"},
+{property:"twitter:domain", content:"skarstrokes.com"},
+{property:"twitter:url", content:"https://skarstrokes.com/"},
+{name:"twitter:title", content:"Skar | Professional Artist"},
+{name:"twitter:description", content:"I`m skar a professional artist who makes use of digital and tradition medium"},
+{name:"twitter:image", content:"/pics/5.jpg"}
       ]
     }
   },
