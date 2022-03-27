@@ -130,6 +130,7 @@ export default {
 
       }else{
         this.n = 0;
+        this.slide = this.slides[n]
         console.log("ewwey")
       }
     },
@@ -160,8 +161,9 @@ export default {
           n++
           }else{
             n = 0;
+            this.slide = this.slides[n]
           }
-        }.bind(this), 4000);
+        }.bind(this), 6000);
 
   }
 }
@@ -183,17 +185,19 @@ export default {
     <Hamburger v-if="$device.isMobile" :ham_hover="hamHover" :ham_click="hamClick" @hamHoverAction="handleHamHover()" @hamClickAction="handleHamClick()"/>
     
     <main class="main__home">
-      <img rel="preload" class="main__image" :src="slide.img" style="object-fit:cover" width="100%" height="100%" alt="portrait of a lady"/>
-    
+      <transition name="slide-fade" mode="in-out">
+      <img :key="slide.index" rel="preload" class="main__image" :src="slide.img" style="object-fit:cover" width="100%" height="100%" alt="portrait of a lady"/>
+      </transition>
       <section class="main__text">
         <div class="main__text-controller">
           <p class="main__text-text">{{slide.text}}</p>
           <NuxtLink :to="slide.link" class="main__text-button">{{ slide.link_text}}</NuxtLink>
         </div>
       </section>
-
+      <div>
       <i class="fa-solid fa-circle-arrow-left leftArrow" @click="prev"></i>
       <i class="fa-solid fa-circle-arrow-right rightArrow" @click="next"></i>
+      </div>
     </main>
 
 </div>
@@ -227,14 +231,31 @@ export default {
     min-height: 100vh;
   }
 
+.slide-fade-enter-active{
+  transition: all 1s ease-in;
+}
+.slide-fade-leave-active {
+  transition: all 1s ease-out;
+}
+
+.slide-fade-enter-to,
+.slide-fade-leave-from {
+  opacity: 1;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateY(6vh);
+  opacity: 0.6;
+}
 
 
 .leftArrow{
   color: rgba(255, 255, 255, 0.281);
   font-size: 2.5em;
-  position: relative;
-  top: -60%;
-  left: 8px;
+  position: absolute;
+  top: 45%;
+  left: 6px;
   z-index: 2;
   cursor: pointer;
 
@@ -243,6 +264,11 @@ export default {
   }
 }
 
+@media only screen and (min-width:780px){
+  .leftArrow{
+    left: calc(40vmin + 10px);
+  }
+}
 .rightArrow{
   color: rgba(255, 255, 255, 0.281);
   font-size: 2.5em;
