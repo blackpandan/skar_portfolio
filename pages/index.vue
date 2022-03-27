@@ -157,7 +157,7 @@ export default {
     
     <main class="main__home">
       <transition name="slide-fade" mode="in-out">
-      <img :key="slide.index" rel="preload" class="main__image" :src="slide.img" style="object-fit:cover" width="100%" height="100%" alt="portrait of a lady"/>
+      <img :key="slide.index" class="main__image" :src="slide.img" style="object-fit:cover" width="100%" height="100%" alt="portrait of a lady"/>
       </transition>
 
       <transition name="slide">
