@@ -13,7 +13,7 @@ export default {
               {
                 hid: 'canonical',
                 rel: 'canonical',
-                href: 'https://skarart.netlify.app',
+                href: 'https://skarstrokes.com',
               },{
         hid: 'og:title',
         property: 'og:title',
@@ -32,12 +32,12 @@ export default {
       {
         hid: 'og:image',
         property: 'og:image',
-        content: '/pics/personal/paintings/5.webp',
+        content: '5.jpg',
       },
       {
         hid: 'og:url',
         property: 'og:url',
-        content: 'https://skarart.netlify.app/'
+        content: 'https://skarstrokes.com/'
       },
       {
         property: 'og:locale',
