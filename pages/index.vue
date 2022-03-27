@@ -3,52 +3,14 @@ export default {
   name: 'IndexPage',
   head(){
     return{
-      title: "Skar | Professional Artist",
+      title: "Home Of Skar | Professional Artist",
       meta: [
               {
                 hid: "description",
                 name: "description",
-                content: "I'm skar a professional artist who makes use of digital and tradition medium"
+                content: "Home | I'm skar a professional artist who makes use of digital and tradition medium"
               },
-              {
-                hid: 'canonical',
-                rel: 'canonical',
-                href: 'https://skarstrokes.com',
-              },{
-        hid: 'og:title',
-        property: 'og:title',
-        content: 'Skar | Professional Artist',
-      },
-      {
-        hid: 'og:description',
-        property: 'og:description',
-        content: 'I`m skar a professional artist who makes use of digital and tradition medium',
-      },
-      {
-        hid: 'og:type',
-        property: 'og:type',
-        content: 'website',
-      },
-      {
-        hid: 'og:image',
-        property: 'og:image',
-        content: '/pics/5.jpg',
-      },
-      {
-        hid: 'og:url',
-        property: 'og:url',
-        content: 'https://skarstrokes.com/'
-      },
-      {
-        property: 'og:locale',
-        content: 'en_NG',
-      },
-      {name:"twitter:card", content:"summary_large_image"},
-{property:"twitter:domain", content:"skarstrokes.com"},
-{property:"twitter:url", content:"https://skarstrokes.com/"},
-{name:"twitter:title", content:"Skar | Professional Artist"},
-{name:"twitter:description", content:"I`m skar a professional artist who makes use of digital and tradition medium"},
-{name:"twitter:image", content:"/pics/5.jpg"}
+              
       ]
     }
   },
@@ -195,7 +157,7 @@ export default {
     
     <main class="main__home">
       <transition name="slide-fade" mode="in-out">
-      <img :key="slide.index" rel="preload" class="main__image" :src="slide.img" style="object-fit:cover" width="100%" height="100%" alt="portrait of a lady"/>
+      <img :key="slide.index" class="main__image" :src="slide.img" style="object-fit:cover" width="100%" height="100%" alt="portrait of a lady"/>
       </transition>
 
       <transition name="slide">
