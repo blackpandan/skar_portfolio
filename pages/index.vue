@@ -257,7 +257,6 @@ export default {
 
 .slide-fade-enter-from,
 .slide-fade-leave-to {
-  transform: translateY(6vh);
   opacity: 0.5;
 }
 
@@ -267,7 +266,6 @@ export default {
 
 .slide-enter /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0.2;
-  transform: translateY(4vh)
 }
 
 .slide-leave-to{
