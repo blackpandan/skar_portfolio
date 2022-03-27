@@ -136,9 +136,12 @@ export default {
     },
   next(){
 
-    if ( this.n < 4){
-      this.slide = this.slides[ this.n];
+    if ( this.n < 3){
        this.n++
+      this.slide = this.slides[ this.n];
+    }else if(this.n == 3){
+      this.n = 0;
+      this.slide = this.slides[this.n];
     }
     else{
        this.n = 0;
@@ -163,7 +166,7 @@ export default {
             n = 0;
             this.slide = this.slides[n]
           }
-        }.bind(this), 6000);
+        }.bind(this), 5000);
 
   }
 }
@@ -188,12 +191,15 @@ export default {
       <transition name="slide-fade" mode="in-out">
       <img :key="slide.index" rel="preload" class="main__image" :src="slide.img" style="object-fit:cover" width="100%" height="100%" alt="portrait of a lady"/>
       </transition>
-      <section class="main__text">
+
+      <transition name="slide">
+      <section class="main__text" :key="slide.text">
         <div class="main__text-controller">
           <p class="main__text-text">{{slide.text}}</p>
           <NuxtLink :to="slide.link" class="main__text-button">{{ slide.link_text}}</NuxtLink>
         </div>
       </section>
+      </transition>
       <div>
       <i class="fa-solid fa-circle-arrow-left leftArrow" @click="prev"></i>
       <i class="fa-solid fa-circle-arrow-right rightArrow" @click="next"></i>
@@ -232,10 +238,10 @@ export default {
   }
 
 .slide-fade-enter-active{
-  transition: all 1s ease-in;
+  transition: all 0.5s ease-in;
 }
 .slide-fade-leave-active {
-  transition: all 1s ease-out;
+  transition: all 0.5s ease-out;
 }
 
 .slide-fade-enter-to,
@@ -245,10 +251,23 @@ export default {
 
 .slide-fade-enter-from,
 .slide-fade-leave-to {
-  transform: translateY(6vh);
-  opacity: 0.6;
+  transform: translateY(9vh);
+  opacity: 0.5;
 }
 
+.slide-enter-active, .slide-leave-active {
+  transition: all 1s;
+}
+
+.slide-enter /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0.2;
+  transform: translateY(5vh)
+}
+
+.slide-leave-to{
+  opacity: 0.2;
+  transform: translateX(50vw); 
+}
 
 .leftArrow{
   color: rgba(255, 255, 255, 0.281);
