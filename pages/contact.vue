@@ -66,8 +66,8 @@ export default {
             placeholder="Your Email"
             class="contact__form-input"
           />
-          <textarea name="message" id="" class="contact__form-input">
-Message</textarea
+          <textarea placeholder="Message" name="message" id="" class="contact__form-input">
+</textarea
           >
           <input type="submit" value="send" class="contact__form-submit" />
         </form>
@@ -114,6 +114,7 @@ Message</textarea
       align-items: center;
 
       &-input{
+        font-family: "Roboto";
           font-size: 1em;
           padding: 0.7em 0 0.7em 1em;
           border-radius: 1em;
