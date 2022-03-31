@@ -60,7 +60,7 @@ export default {
             class="contact__form-input"
           />
           <input
-            type="email"
+            type="text"
             name="email"
             id=""
             placeholder="Your Email"
