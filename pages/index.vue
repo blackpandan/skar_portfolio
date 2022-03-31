@@ -118,13 +118,13 @@ export default {
 
   },
   beforeEnter(el){
-    this.$gsap.set(el, {opacity: 0.4});
+    this.$gsap.set(el, {opacity: 0.3});
   },
   enter(el, done){
-    this.$gsap.to(el, {opacity: 1, duration: 1, oncomplete: done});
+    this.$gsap.to(el, {opacity: 1, duration: 1.5, oncomplete: done});
   },
   leave(el, done){
-    this.$gsap.to(el, {duration: 1, opacity: 0.4, onComplete: done})
+    this.$gsap.to(el, {duration: 1.3, opacity: 0.5, onComplete: done})
   }
 
 
@@ -177,7 +177,7 @@ export default {
       <img :key="slide.index" class="main__image" :src="slide.img" style="object-fit:cover" width="100%" height="100%" alt="portrait of a lady"/>
       </transition>
 
-      <transition name="slide">
+      <transition name="slide" mode="out-in">
       <section class="main__text" :key="slide.text">
         <div class="main__text-controller">
           <p class="main__text-text">{{slide.text}}</p>
@@ -241,8 +241,11 @@ export default {
 
 
 
-.slide-enter-active, .slide-leave-active {
-  transition: all 1s;
+.slide-enter-active{
+  transition: all 1.5s;
+}
+.slide-leave-active {
+  transition: all 1.3s;
 }
 
 .slide-enter /* .fade-leave-active below version 2.1.8 */ {
