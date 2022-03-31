@@ -156,7 +156,7 @@ export default {
     <Hamburger v-if="$device.isMobile" :ham_hover="hamHover" :ham_click="hamClick" @hamHoverAction="handleHamHover()" @hamClickAction="handleHamClick()"/>
     
     <main class="main__home">
-      <transition name="slide-fade" mode="in-out">
+      <transition name="fade" mode="in-out">
       <img :key="slide.index" class="main__image" :src="slide.img" style="object-fit:cover" width="100%" height="100%" alt="portrait of a lady"/>
       </transition>
 
@@ -205,22 +205,24 @@ export default {
     min-height: 100vh;
   }
 
-.slide-fade-enter-active{
-  transition: all 0.5s ease-in;
-}
-.slide-fade-leave-active {
-  transition: all 0.5s ease-out;
-}
+// .slide-fade-enter-active{
+//   transition: all 0.5s ease-in;
+// }
+// .slide-fade-leave-active {
+//   transition: all 0.5s ease-out;
+// }
 
-.slide-fade-enter-to,
-.slide-fade-leave-from {
-  opacity: 1;
-}
+// .slide-fade-enter-to,
+// .slide-fade-leave-from {
+//   opacity: 1;
+// }
 
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  opacity: 0.5;
-}
+// .slide-fade-enter-from,
+// .slide-fade-leave-to {
+//   opacity: 0.5;
+// }
+
+
 
 .slide-enter-active, .slide-leave-active {
   transition: all 1s;
