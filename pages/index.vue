@@ -116,7 +116,18 @@ export default {
       this.slide = this.slides[ this.n];
     }
 
+  },
+  beforeEnter(el){
+    this.$gsap.set(el, {opacity: 0.4});
+  },
+  enter(el, done){
+    this.$gsap.to(el, {opacity: 1, duration: 1, oncomplete: done});
+  },
+  leave(el, done){
+    this.$gsap.to(el, {duration: 1, opacity: 0.4, onComplete: done})
   }
+
+
   },
 
   created(){
@@ -156,7 +167,13 @@ export default {
     <Hamburger v-if="$device.isMobile" :ham_hover="hamHover" :ham_click="hamClick" @hamHoverAction="handleHamHover()" @hamClickAction="handleHamClick()"/>
     
     <main class="main__home">
-      <transition name="fade" mode="in-out">
+      <transition 
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @leave="leave"
+      appear
+      mode="out-in"
+      >
       <img :key="slide.index" class="main__image" :src="slide.img" style="object-fit:cover" width="100%" height="100%" alt="portrait of a lady"/>
       </transition>
 
