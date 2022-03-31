@@ -121,7 +121,10 @@ export default {
     this.$gsap.set(el, {opacity: 0.3});
   },
   enter(el, done){
-    this.$gsap.to(el, {opacity: 1, duration: 1.5, oncomplete: done});
+    this.$gsap.to(el, {opacity: 1, x: -100, duration: 1.5, oncomplete: done});
+  },
+  afterEnter(el){
+    this.$gsap.set(el, {x: 0})
   },
   leave(el, done){
     this.$gsap.to(el, {duration: 1.3, opacity: 0.5, onComplete: done})
@@ -170,6 +173,7 @@ export default {
       <transition 
       @before-enter="beforeEnter"
       @enter="enter"
+      @after-enter="afterEnter"
       @leave="leave"
       appear
       mode="out-in"
