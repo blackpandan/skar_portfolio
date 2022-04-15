@@ -116,7 +116,21 @@ export default {
       this.slide = this.slides[ this.n];
     }
 
+  },
+  beforeEnter(el){
+    this.$gsap.set(el, {opacity: 0.3, x:-100});
+  },
+  enter(el, done){
+    this.$gsap.to(el, {opacity: 1, x: 0, duration: 1.5, oncomplete: done});
+  },
+  afterEnter(el){
+    this.$gsap.set(el, {x: 0})
+  },
+  leave(el, done){
+    this.$gsap.fromTo(el, {x: -100, opacity: 1}, {duration: 1.3, opacity: 0.5, x: 0, onComplete: done})
   }
+
+
   },
 
   created(){
@@ -156,11 +170,18 @@ export default {
     <Hamburger v-if="$device.isMobile" :ham_hover="hamHover" :ham_click="hamClick" @hamHoverAction="handleHamHover()" @hamClickAction="handleHamClick()"/>
     
     <main class="main__home">
-      <transition name="slide-fade" mode="in-out">
+      <transition 
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @after-enter="afterEnter"
+      @leave="leave"
+      appear
+      mode="out-in"
+      >
       <img :key="slide.index" class="main__image" :src="slide.img" style="object-fit:cover" width="100%" height="100%" alt="portrait of a lady"/>
       </transition>
 
-      <transition name="slide">
+      <transition name="slide" mode="out-in">
       <section class="main__text" :key="slide.text">
         <div class="main__text-controller">
           <p class="main__text-text">{{slide.text}}</p>
@@ -205,25 +226,30 @@ export default {
     min-height: 100vh;
   }
 
-.slide-fade-enter-active{
-  transition: all 0.5s ease-in;
-}
-.slide-fade-leave-active {
-  transition: all 0.5s ease-out;
-}
+// .slide-fade-enter-active{
+//   transition: all 0.5s ease-in;
+// }
+// .slide-fade-leave-active {
+//   transition: all 0.5s ease-out;
+// }
 
-.slide-fade-enter-to,
-.slide-fade-leave-from {
-  opacity: 1;
-}
+// .slide-fade-enter-to,
+// .slide-fade-leave-from {
+//   opacity: 1;
+// }
 
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  opacity: 0.5;
-}
+// .slide-fade-enter-from,
+// .slide-fade-leave-to {
+//   opacity: 0.5;
+// }
 
-.slide-enter-active, .slide-leave-active {
-  transition: all 1s;
+
+
+.slide-enter-active{
+  transition: all 1.5s;
+}
+.slide-leave-active {
+  transition: all 1.3s;
 }
 
 .slide-enter /* .fade-leave-active below version 2.1.8 */ {
