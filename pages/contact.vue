@@ -153,6 +153,7 @@ export default {
 
   &__innerController{
       padding: 4em 7vw 0 7vw;
+      min-height:100vh;
 
       &-lower{
         position: relative;
