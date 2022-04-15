@@ -131,6 +131,7 @@ export default {
   }
   
   &__controller {
+    position:relative;
     background-color: black;
     width: 100vw;
     height: 100vh;
