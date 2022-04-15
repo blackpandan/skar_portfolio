@@ -3,11 +3,41 @@ export default {
   data() {
     return {
       nav: false,
+      name: "",
+      email: "",
+      message: "",
       hamHover: false,
       hamClick: false,
+      response: null,
+      classStatus:  false,
     };
   },
   methods: {
+    sendEmail(){
+      console.log(this.$refs.status.class);
+      // console.log(this.fetc);
+      const url = "https://formspree.io/f/xqknydoz";
+      const options = {
+        method: "post",
+        headers: {
+          'Accept':"application/json"
+        },
+        data:{
+          name: this.name,
+          email: this.email,
+          message: this.message
+        }
+      }
+      this.$axios.$post(url, options.data).then((res) =>{
+        console.log(res);
+        this.classStatus = false;
+        this.response = "Email Has Been Sent Thanks";
+    }).catch((err)=>{
+      console.log(err);
+      this.classStatus = true;
+      this.response = "Ooops Something went wrong";
+    });
+    },
     handleHamClick() {
       this.nav = !this.nav;
       this.hamClick = !this.hamClick;
@@ -42,7 +72,6 @@ export default {
         @hamClickAction="handleHamClick()"
       />
     </header>
-
     <main class="contact__innerController">
       <section class="contact__innerController-upper">
         <h1 class="contact__head">Contact me</h1>
@@ -52,12 +81,13 @@ export default {
       </section>
 
       <section class="contact__innerController-lower">
-        <form class="contact__form" name="contact" action="mailto:elbubajoshua007@gmail.com" method="POST" target="_blank">
+        <form class="contact__form" name="contact" v-on:submit.prevent="sendEmail" method="POST" target="_blank">
           <input
             type="text"
             name="subject"
             placeholder="Your Name"
             class="contact__form-input"
+            v-model="name"
           />
           <input
             type="text"
@@ -65,11 +95,14 @@ export default {
             id=""
             placeholder="Your Email"
             class="contact__form-input"
+            v-model="email"
           />
-          <textarea placeholder="Message" name="message" id="" class="contact__form-input">
+          <textarea placeholder="Message" name="message" id="" class="contact__form-input" v-model="message">
 </textarea
           >
-          <input type="submit" value="send" class="contact__form-submit" />
+          <input type="submit" value="send" class="contact__form-submit"
+          />
+          <p :class="['status',{'status--error': classStatus}]" ref="status">{{response}}</p>
         </form>
       </section>
     </main>
@@ -102,10 +135,28 @@ export default {
     width: 100vw;
     height: 100vh;
     padding: 0 0 0 0;
+
+    .status{
+      width: 90%;
+      padding: 1vh 0 1vh 2vmin;
+      position: absolute;
+      bottom: -2vh;
+      color: $chill;
+      font-size: calc(1em + 1vmin);
+      transform: translateY(100%);
+
+      &--error{
+        color: red;
+      }
+    }
   }
 
   &__innerController{
       padding: 4em 7vw 0 7vw;
+
+      &-lower{
+        position: relative;
+      }
   }
 
   &__form{
@@ -140,8 +191,8 @@ export default {
 
       &-submit{
           margin: 2.5em 0 0 0;
-          width: fit-content;
-          padding: 0.7em 20vw 0.7em 20vw;
+          width: 90%;
+          padding: 0.7em 0 0.7em 0;
           border-radius: 1em;
           background-color: $primary-no;
           color: $chill;
